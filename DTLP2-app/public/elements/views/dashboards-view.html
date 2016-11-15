@@ -19,28 +19,14 @@
     </iron-ajax>
 
     <!-- decksIronAjax used to load data from local View Service API -->
-    <iron-ajax
+    <!--<iron-ajax
       id="decksIronAjax"
       url="[[_decksUrl]]"
       last-response="{{_decksResponse}}">
-      <!-- auto -->
-    </iron-ajax>
+      <!-- auto
+    </iron-ajax>-->
 
-    <!-- px-context-browser element -->
-    <!--<px-context-browser
-      id="contextBrowser"
-      label-field="name"
-      id-field="id"
-      browser-context="[[_initialBrowserContext]]"
-      show-chevron="true">
-      <px-deck-selector
-        decks="[[_decks]]"
-        selected-deck="{{_selectedDeck}}">
-      </px-deck-selector>
-    </px-context-browser>-->
-
-    <current-usage-card></current-usage-card>
-    <up-time-card></up-time-card>
+    <block-card-1></block-card-1>
 
     <!--<px-deck-index
       view-service-base-url="[[viewServiceBaseUrl]]"
