@@ -1,22 +1,17 @@
 ---
-#
-#  A basic hello world index.html file
-#  This application, and steps to deploy are described in full in the getting started guide on predix.io
-#  Step 1 is to change your application name, save, exit, and cf push
-#  Step 2 - After you have your application running you can bind to the services below as described on predix.io
-
 applications:
-  - name: DTLP2 # Step 1: Change your application name
-    buildpack: staticfile_buildpack 
-    #path: dist
-    memory: 256M
-    stack: cflinuxfs2
-
-    # Later, to Bind to services, uncomment the section below and enter the service name that you gave, e.g.
-    #services:
-    #        - my_redis_instance # change this to your redis service instance name
-    #        - my_viewsvc_instance # change this to your view service instance name
-    # You may set environment variables that your code will read in, e.g.
-    #env:
-    #  UAA_SERVER_URL: <my-UAA-URL>
-    #  REDIS: redis-<num>
+  - name: predix-ui-seed
+    memory: 64M
+    buildpack: nodejs_buildpack
+    command: node server/app.js
+    path: dist
+#services:
+ # - <your-name>-secure-uaa-instance
+ # - <your-name>-timeseries-instance
+ # - <your-name>-asset-instance
+env:
+    node_env: cloud
+    uaa_service_label : predix-uaa
+    # Add these values for authentication in the cloud
+    #clientId: {Enter client ID, e.g. app-client-id, and place it here}
+    #base64ClientCredential: dWFhLWNsaWVudC1pZDp1YWEtY2xpZW50LWlkLXNlY3JldA==
