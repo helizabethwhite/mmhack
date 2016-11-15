@@ -27,7 +27,7 @@
     </iron-ajax>
 
     <!-- px-context-browser element -->
-    <px-context-browser
+    <!--<px-context-browser
       id="contextBrowser"
       label-field="name"
       id-field="id"
@@ -37,12 +37,15 @@
         decks="[[_decks]]"
         selected-deck="{{_selectedDeck}}">
       </px-deck-selector>
-    </px-context-browser>
+    </px-context-browser>-->
 
-    <px-deck-index
+    <current-usage-card></current-usage-card>
+    <up-time-card></up-time-card>
+
+    <!--<px-deck-index
       view-service-base-url="[[viewServiceBaseUrl]]"
       deck-id="[[_selectedDeckId]]">
-    </px-deck-index>
+    </px-deck-index> -->
 
   </template>
   <script>
