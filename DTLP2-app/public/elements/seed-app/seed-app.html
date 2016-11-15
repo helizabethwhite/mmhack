@@ -71,12 +71,12 @@
           <!-- /blankpage route and view -->
           <app-route
             route="[[_route]]"
-            pattern="/blankpage"
-            active="{{_blankpageActive}}">
+            pattern="/partpicker"
+            active="{{_partpickerActive}}">
           </app-route>
           <px-view
-            active="[[_blankpageActive]]"
-            element-href="/elements/views/blankpage-view.html">
+            active="[[_partpickerActive]]"
+            element-href="/elements/views/partpicker-view.html">
           </px-view>
 
         </main>
@@ -119,8 +119,8 @@
               "path": "/dashboards",
               "icon": "fa-tachometer"
             }, {
-              "label": "Blank Page",
-              "path": "/blankpage",
+              "label": "Part Picker",
+              "path": "/partpicker",
               "icon": "fa-file-o"
             }]
           }
