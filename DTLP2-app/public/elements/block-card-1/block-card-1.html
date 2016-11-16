@@ -479,6 +479,11 @@
         console.log(data.detail.response);
 
         this.powerValsServer = this.allServerAssets.aggregatedTimeSeriesData.powerVals;
+
+        console.log("POWER VALS");
+        console.log(this.powerValsServer);
+        console.log(this.powerValsLocal);
+
         this._updateGraphNew(this.powerValsServer);
         console.log(this.powerValsServer);
 
