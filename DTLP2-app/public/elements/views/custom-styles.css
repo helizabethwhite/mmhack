@@ -34,3 +34,21 @@
 .seed-app-0 main.seed-app {
 	margin-left: 0 !important;
 }
+
+.no-bottom-padding {
+	padding-bottom: 0.33rem !important;
+}
+
+.p-left-column {
+	width: 50%;
+    float: left;
+    margin: 0;
+    margin-top: 1em;
+}
+
+.p-right-column {
+	width: 50%;
+    display: inline-block;
+    margin: 0;
+    margin-top: 1em;
+}

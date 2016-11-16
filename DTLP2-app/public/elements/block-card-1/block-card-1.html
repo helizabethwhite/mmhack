@@ -5,7 +5,6 @@
 <link rel="import" href="../../bower_components/px-chart/px-chart.html">
 
 <dom-module id="block-card-1">
-
   <template>
     <style>
       #cost-output h2 {
@@ -31,8 +30,7 @@
         margin-top: 0;
       }
     </style>
-
-    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-chevron-hit="_toggleCard" onload="load()">
+    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
 
     <iron-ajax
            id="requestAllAssets"
@@ -40,9 +38,6 @@
            url="gendata.json"
            handle-as="json"
            on-response="handleResponse">
-
-        </iron-ajax>
-
 
         </iron-ajax>
       <div id="top-info">
@@ -256,10 +251,8 @@
         console.log('partpicker-view ready()');
         //Add local timeseries data... needs to be updated to respond to requests
         $(document).ready(function(e) {
-          var blk1Baseline = gendata.aggregatedTimeSeriesData.powerVals;
-          addBaselineSeries(blk1Baseline);
+          addBaselineSeries(gendata.aggregatedTimeSeriesData.powerVals);
         });
-
         //this.setData();
       },
       _sendData: function() {
@@ -364,5 +357,4 @@
       }
     }
   </script>
-
 </dom-module>
