@@ -30,11 +30,9 @@
         margin-top: 0;
       }
     </style>
-
-    <!--<iron-ajax
+    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
 
     <iron-ajax
-
            auto
            id="requestAllAssets"
            method="GET"
@@ -42,9 +40,7 @@
            handle-as="json"
            on-response="handleResponse">
 
-        </iron-ajax>-->
-    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
-
+        </iron-ajax>
       <div id="top-info">
         <div id="cost-output">
           <h2>Cost: $<span id="cost">180</span></h2>
@@ -93,10 +89,12 @@
           </px-dropdown>
         </div>
         <div id="specs">
+          <p>Average Output: <span id="average-output">1485</span>mW</p>
           <p>Max Output: <span id="max-output">1485</span>mW</p>
           <p>Frequency: <span id="frequency">60</span></p>
           <p>Ramp Rate: <span id="ramp-rate">5</span></p>
           <p>Minimum Load: <span id="minimum-load">25</span></p>
+          <p>Operating Cost: <span id="operating-cost">1485</span>mW</p>
         </div>
       </div>
 
@@ -111,10 +109,12 @@
           </px-dropdown>
         </div>
         <div id="specs">
+          <p>Average Output: <span id="average-output">1485</span>mW</p>
           <p>Max Output: <span id="max-output">1265</span>mW</p>
           <p>Frequency: <span id="frequency">60</span></p>
           <p>Ramp Rate: <span id="ramp-rate">5</span></p>
           <p>Minimum Load: <span id="minimum-load">25</span></p>
+          <p>Operating Cost: <span id="operating-cost">1485</span>mW</p>
         </div>
       </div>
 
@@ -129,8 +129,8 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Max Output: <span id="max-output">50</span>mW</p>
           <p>Power Factor: <span id="power-factor">60</span></p>
+          <p>Operating Cost: <span id="operating-cost">1485</span>mW</p>
         </div>
       </div>
 
@@ -256,7 +256,8 @@
         $(document).ready(function(e) {
           addBaselineSeries(gendata.aggregatedTimeSeriesData.powerVals);
         });
-        //this.getInitialData();
+
+        this.getInitialData();
         //this.setData();
       },
       _sendData: function() {
@@ -270,29 +271,33 @@
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
-        //this._updateSpecsGT1(69,70,71,72);
-        //this._updateSpecsGT2(2,4,6,8);
-        this._updateSpecsGen1(300,400,500);
+        this._updateSpecsGT1(69,70,71,72);
+        this._updateSpecsGT2(2,4,6,8);
+        this._updateSpecsGen1(300,400);
         this._updateBlockCost(200000);
         this._updateBlockOutput(300000);
 
         this.fire("scoreboard-update");
       },
-      _updateSpecsGT1: function(maxOutput, frequency, rampRate, minimumLoad) {
+      _updateSpecsGT1: function(averageOutput, maxOutput, frequency, rampRate, minimumLoad, operatingCost) {
+        document.querySelector("#gt1-blk1 #specs #average-output").innerHTML = averageOutput;
         document.querySelector("#gt1-blk1 #specs #max-output").innerHTML = maxOutput;
         document.querySelector("#gt1-blk1 #specs #frequency").innerHTML = frequency;
         document.querySelector("#gt1-blk1 #specs #ramp-rate").innerHTML = rampRate;
         document.querySelector("#gt1-blk1 #specs #minimum-load").innerHTML = minimumLoad;
+        document.querySelector("#gt1-blk1 #specs #operating-cost").innerHTML = operatingCost;
       },
-      _updateSpecsGT2: function(maxOutput, frequency, rampRate, minimumLoad) {
+      _updateSpecsGT2: function(averageOutput, maxOutput, frequency, rampRate, minimumLoad, operatingCost) {
+        document.querySelector("#gt2-blk1 #specs #average-output").innerHTML = averageOutput;
         document.querySelector("#gt2-blk1 #specs #max-output").innerHTML = maxOutput;
         document.querySelector("#gt2-blk1 #specs #frequency").innerHTML = frequency;
         document.querySelector("#gt2-blk1 #specs #ramp-rate").innerHTML = rampRate;
         document.querySelector("#gt2-blk1 #specs #minimum-load").innerHTML = minimumLoad;
+        document.querySelector("#gt2-blk1 #specs #operating-cost").innerHTML = operatingCost;
       },
-      _updateSpecsGen1: function(maxOutput, powerFactor) {
-        document.querySelector("#gen1-blk1 #specs #max-output").innerHTML = maxOutput;
+      _updateSpecsGen1: function(powerFactor, operatingCost) {
         document.querySelector("#gen1-blk1 #specs #power-factor").innerHTML = powerFactor;
+        document.querySelector("#gen1-blk1 #specs #operating-cost").innerHTML = operatingCost;
       },
       _updateBlockCost: function(cost) {
         document.querySelector("#cost-output #cost").innerHTML = cost;
@@ -304,7 +309,6 @@
 
       },
       _toggleCard: function() {
-        console.log("collapse card");
         if (document.querySelector("#collapse").hasAttribute("hidden")) {
           document.querySelector("#collapse").removeAttribute("hidden");
         }
@@ -314,8 +318,21 @@
       },
       handleResponse: function (data) { // return function from calling server for allAssets
           this.allAssets = data.detail.response;
-          this._updateSpecsGT1(this.allAssets.maxPowerData[0].maxPower,70,71,72);
-          this._updateSpecsGT2(this.allAssets.maxPowerData[1].maxPower,4,6,8);
+          this._updateSpecsGT1(this.allAssets.avgPowerData[0].avgPower,
+                              this.allAssets.maxPowerData[0].maxPower,
+                              this.allAssets.frequencyData[0].frequency,
+                              this.allAssets.rampRateData[0].rampRate,
+                              this.allAssets.minimumLoadData[0].minimumLoad,
+                              this.allAssets.operatingCostData[0].operatingCost
+                            );
+          this._updateSpecsGT2(this.allAssets.avgPowerData[1].avgPower,
+                              this.allAssets.maxPowerData[1].maxPower,
+                              this.allAssets.frequencyData[1].frequency,
+                              this.allAssets.rampRateData[1].rampRate,
+                              this.allAssets.minimumLoadData[1].minimumLoad,
+                              this.allAssets.operatingCostData[1].operatingCost);
+          this._updateSpecsGen1(this.allAssets.powerFactorData[2].powerFactor,
+                                this.allAssets.operatingCostData[2].operatingCost);
           console.log(data.detail.response);
       }
     });
