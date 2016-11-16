@@ -7,7 +7,7 @@
 <dom-module id="block-card-3">
   <template>
     <style>
-      #cost-output h2 {
+      #cost-output3 h2 {
         float: left;
         text-align: center;
         width: 50%;
@@ -53,7 +53,7 @@
         </iron-ajax>
 
       <div id="top-info">
-        <div id="cost-output">
+        <div id="cost-output3">
           <h2>Average Cost: $<span id="cost">1</span>M</h2>
           <h2>Output: <span id="output">1</span>mW</h2>
         </div>
@@ -91,11 +91,11 @@
 
       <div id="gt1-blk3" class="block" >
         <div class="dropdown">
-          <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7IEA">
+          <px-dropdown id="asset-dropdown" display-value="Steam Turbine - 107A-10">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
-              items='[{"key":"Gas Engine 1","val":"Gas Turbine - 7IEA"},{"key":"Gas Engine 2","val":"Gas Turbine - 7FB.04"},
-              {"key":"Gas Engine 3","val":"Gas Turbine - 6FA.01"}]'>
+              items='[{"key":"Steam Engine 1","val":"Steam Turbine - 209C-7"},{"key":"Steam Engine 2","val":"Steam Turbine - 107A-10"},
+              {"key":"Steam Engine 3","val":"Steam Turbine - 360SC"}]'>
             </px-dropdown-content>
           </px-dropdown>
         </div>
@@ -134,11 +134,11 @@
 
       <div id="gt2-blk3" class="block" >
         <div class="dropdown">
-          <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7FB.04">
+          <px-dropdown id="asset-dropdown" display-value="Steam Turbine - 107A-10">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
-              items='[{"key":"Gas Engine 1","val":"Gas Turbine - 7IEA"},{"key":"Gas Engine 2","val":"Gas Turbine - 7FB.04"},
-              {"key":"Gas Engine 3","val":"Gas Turbine - 6FA.01"}]'>
+              items='[{"key":"Steam Engine 1","val":"Steam Turbine - 209C-7"},{"key":"Steam Engine 2","val":"Steam Turbine - 107A-10"},
+              {"key":"Steam Engine 3","val":"Steam Turbine - 360SC"}]'>
             </px-dropdown-content>
           </px-dropdown>
         </div>
@@ -172,10 +172,10 @@
 
       <div id="gen1-blk3" class="block" >
         <div class="dropdown">
-          <px-dropdown id="asset-dropdown" display-value="Gas Gen - 9H2">
+          <px-dropdown id="asset-dropdown" display-value="Gen - 6A2">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
-              items='[{"key":"Generator 1","val":"Gas Gen - 9H2"},{"key":"Generator 2","val":"Gas Gen - 6A2"},{"key":"Generator 3"}]'>
+              items='[{"key":"Generator 1","val":"Gen - 9H2"},{"key":"Generator 2","val":"Gen - 6A2"},{"key":"Generator 3","val":"Gen - 7H2-IV"}]'>
             </px-dropdown-content>
           </px-dropdown>
         </div>
@@ -370,11 +370,11 @@
         document.querySelector("#gen1-blk3 #specs #operating-cost").innerHTML = parseFloat(operatingCost).toFixed(2);
       },
       _updateBlockCost: function(cost) {
-        document.querySelector("#cost-output #cost").innerHTML = parseFloat(cost).toFixed(2);
+        document.querySelector("#cost-output3 #cost").innerHTML = parseFloat(cost).toFixed(2);
         this.cost = cost;
       },
       _updateBlockOutput: function(output) {
-        document.querySelector("#cost-output #output").innerHTML = parseFloat(output).toFixed(2);
+        document.querySelector("#cost-output3 #output").innerHTML = parseFloat(output).toFixed(2);
         this.output = output;
       },
       _testLog: function() {
