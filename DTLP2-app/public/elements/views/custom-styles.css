@@ -1,0 +1,36 @@
+.scoreboard.style-scope.scoreboard-card {
+    text-transform: uppercase;
+    padding-top: .5em;
+    text-align: center;
+    font-size: 1.33rem;
+}
+
+.left-aligned.style-scope.scoreboard-card {
+    float: left;
+    width: 50%;
+}
+
+.future-scoreboard.style-scope.scoreboard-card {
+    display:inline-block;
+    width: 50%;
+}
+
+.title.style-scope.scoreboard-card {
+    border: 1px solid;
+}
+
+.score-large-text.style-scope.scoreboard-card {
+    font-size: 2rem;
+}
+
+.green {
+	color: #1cbb1c;
+}
+
+.red {
+	color: red;
+}
+
+.seed-app-0 main.seed-app {
+	margin-left: 0 !important;
+}
