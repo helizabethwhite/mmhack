@@ -475,7 +475,10 @@
         this._updateBlockOutput(totalBlockAverageOutput);
         console.log(data.detail.response);
 
-        this.powerValsServer = this.allAssets.aggregatedTimeSeriesData.powerVals;
+        this.powerValsServer = this.allServerAssets.aggregatedTimeSeriesData.powerVals;
+        console.log("POWER VALS");
+        console.log(this.powerValsServer);
+        console.log(this.powerValsLocal);
         this._updateGraphNew(this.powerValsServer);
         this._updateGraphBaseline(this.powerValsLocal);
         console.log(this.powerValsServer);
