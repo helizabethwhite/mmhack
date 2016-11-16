@@ -20,7 +20,7 @@
         width: 50%;
       }
       #graph {
-        clear: left
+        clear: left;
       }
       .clear {
         clear: both;
@@ -206,10 +206,7 @@
         var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey;
         var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey;
         var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey;
-
-        console.log(selectedGt1);
-        console.log(selectedGt2);
-        console.log(selectedGen1);
+        console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
       },
       _testLog: function() {
 
