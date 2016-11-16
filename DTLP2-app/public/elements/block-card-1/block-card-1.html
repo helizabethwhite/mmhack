@@ -87,7 +87,7 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Max Output: <span id="max-output">50</span>mW</p>
+          <p>Max Output: <span id="max-output">1485</span>mW</p>
           <p>Frequency: <span id="frequency">60</span></p>
           <p>Ramp Rate: <span id="ramp-rate">5</span></p>
           <p>Minimum Load: <span id="minimum-load">25</span></p>
@@ -96,7 +96,7 @@
 
       <div id="gt2-blk1" class="block" >
         <div class="dropdown">
-          <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7IEA">
+          <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7FB.04">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
               items='[{"key":"Gas Engine 1 - TS","val":"Gas Turbine - 7IEA"},{"key":"Gas Engine 2 - TS","val":"Gas Turbine - 7FB.04"},
@@ -105,7 +105,7 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Max Output: <span id="max-output">50</span>mW</p>
+          <p>Max Output: <span id="max-output">1265</span>mW</p>
           <p>Frequency: <span id="frequency">60</span></p>
           <p>Ramp Rate: <span id="ramp-rate">5</span></p>
           <p>Minimum Load: <span id="minimum-load">25</span></p>
@@ -296,7 +296,7 @@
         var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey
         != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : "Gas Engine 1 - TS";
         var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : "Gas Engine 1 - TS";
+        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : "Gas Turbine - 7FB.04";
         var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey
         != '' ? document.querySelector("#gen1-blk1 div px-dropdown").selectedKey : 1;
 
