@@ -8,15 +8,8 @@
 
   <template>
     <style>
-      #cost-output{
-      }
-      #cost {
+      #cost-output h2 {
         float: left;
-        text-align: center;
-        width: 50%;
-      }
-      #output {
-        float: right;
         text-align: center;
         width: 50%;
       }
@@ -29,12 +22,20 @@
       .dropdown {
         width: 200px;
       }
+      .block {
+        width: 200px;
+        float: left;
+        margin-left: 20px;
+      }
+      #equipment {
+        margin-top: 0;
+      }
     </style>
     <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
       <div id="top-info">
         <div id="cost-output">
-          <h2 id="cost">Cost: $180</h2>
-          <h2 id="output">Output: 400mW</h2>
+          <h2>Cost: $<span id="cost">180</span></h2>
+          <h2>Output: <span id="output">400</span>mW</h2>
         </div>
         <div id="graph">
           <!--
@@ -55,18 +56,16 @@
                     myName: 'foo'
                 };
           -->
-          <px-chart height="250" margin="[10,10,10,10]" spacing-bottom="0" legend-right>
 
-          </px-chart>
         </div>
       </div>
 
       <div class="clear">
       </div>
-      <div id="collapse">
+      <div id="collapse" hidden="true">
         <h2 id="equipment">Equipment:</h2>
 
-      <div id="gt1-blk1">
+      <div id="gt1-blk1" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine 1">
             <px-dropdown-content extend-dropdown='true'
@@ -76,15 +75,15 @@
             </px-dropdown-content>
           </px-dropdown>
         </div>
-        <div class="specs">
-          <p id="max-output">Max Output: 50mW</p>
-          <p id="frequency">Frequency: 60</p>
-          <p id="ramp-rate">Ramp Rate: 5</p>
-          <p id="minimum-load">Minimum Load: 25</p>
+        <div id="specs">
+          <p>Max Output: <span id="max-output">50</span>mW</p>
+          <p>Frequency: <span id="frequency">60</span></p>
+          <p>Ramp Rate: <span id="ramp-rate">5</span></p>
+          <p>Minimum Load: <span id="minimum-load">25</span></p>
         </div>
       </div>
 
-      <div id="gt2-blk1">
+      <div id="gt2-blk1" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine 2">
             <px-dropdown-content extend-dropdown='true'
@@ -94,15 +93,15 @@
             </px-dropdown-content>
           </px-dropdown>
         </div>
-        <div class="specs">
-          <p id="max-output">Max Output: 50mW</p>
-          <p id="frequency">Frequency: 60</p>
-          <p id="ramp-rate">Ramp Rate: 5</p>
-          <p id="minimum-load">Minimum Load: 25</p>
+        <div id="specs">
+          <p>Max Output: <span id="max-output">50</span>mW</p>
+          <p>Frequency: <span id="frequency">60</span></p>
+          <p>Ramp Rate: <span id="ramp-rate">5</span></p>
+          <p>Minimum Load: <span id="minimum-load">25</span></p>
         </div>
       </div>
 
-      <div id="gen1-blk1">
+      <div id="gen1-blk1" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Generator">
             <px-dropdown-content extend-dropdown='true'
@@ -112,14 +111,18 @@
             </px-dropdown-content>
           </px-dropdown>
         </div>
-        <div class="specs">
-          <p id="max-output">Max Output: 50mW</p>
-          <p id="power-factor">Power Factor: 60</p>
+        <div id="specs">
+          <p>Max Output: <span id="max-output">50</span>mW</p>
+          <p>Power Factor: <span id="power-factor">60</span></p>
         </div>
       </div>
 
+      <div class="clear">
+      </div>
+
+      <button on-click="_sendData">Submit</button>
     </div>
-    <button on-click="_sendData">Submit</button>
+
     </px-card>
   </template>
 
@@ -204,10 +207,43 @@
         //this.setData();
       },
       _sendData: function() {
-        var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey;
-        var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey;
-        var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey;
+        console.log(document.querySelector("#gt1-blk1 div px-dropdown").selectedKey);
+        var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey
+        != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : 1;
+        var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey
+        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : 1;
+        var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey
+        != '' ? document.querySelector("#gen1-blk1 div px-dropdown").selectedKey : 1;
+
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
+
+        this._updateSpecsGT1(69,70,71,72);
+        this._updateSpecsGT2(2,4,6,8);
+        this._updateSpecsGen1(300,400,500);
+        this._updateBlockCost(200000);
+        this._updateBlockOutput(300000);
+      },
+      _updateSpecsGT1: function(maxOutput, frequency, rampRate, minimumLoad) {
+        document.querySelector("#gt1-blk1 #specs #max-output").innerHTML = maxOutput;
+        document.querySelector("#gt1-blk1 #specs #frequency").innerHTML = frequency;
+        document.querySelector("#gt1-blk1 #specs #ramp-rate").innerHTML = rampRate;
+        document.querySelector("#gt1-blk1 #specs #minimum-load").innerHTML = minimumLoad;
+      },
+      _updateSpecsGT2: function(maxOutput, frequency, rampRate, minimumLoad) {
+        document.querySelector("#gt2-blk1 #specs #max-output").innerHTML = maxOutput;
+        document.querySelector("#gt2-blk1 #specs #frequency").innerHTML = frequency;
+        document.querySelector("#gt2-blk1 #specs #ramp-rate").innerHTML = rampRate;
+        document.querySelector("#gt2-blk1 #specs #minimum-load").innerHTML = minimumLoad;
+      },
+      _updateSpecsGen1: function(maxOutput, powerFactor) {
+        document.querySelector("#gen1-blk1 #specs #max-output").innerHTML = maxOutput;
+        document.querySelector("#gen1-blk1 #specs #power-factor").innerHTML = powerFactor;
+      },
+      _updateBlockCost: function(cost) {
+        document.querySelector("#cost-output #cost").innerHTML = cost;
+      },
+      _updateBlockOutput: function(output) {
+        document.querySelector("#cost-output #output").innerHTML = output;
       },
       _testLog: function() {
 
