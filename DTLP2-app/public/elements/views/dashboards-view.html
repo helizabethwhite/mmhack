@@ -156,9 +156,9 @@
       },
 
       _updateScoreboard: function() {
-        var costBlock1 = document.querySelector('block-card-1').cost;
+        var costBlock1 = parseFloat(document.querySelector('block-card-1').cost).toFixed(2);
         var oldCost = document.querySelector('scoreboard-card').totalPotentialCost;
-        document.querySelector('scoreboard-card').totalPotentialCost = parseFloat(costBlock1).toFixed(2);
+        document.querySelector('scoreboard-card').totalPotentialCost = costBlock1;
         if(costBlock1 < oldCost) {
           document.getElementById("potential-cost").classList.add("green");
         } else if (costBlock1 > oldCost) {
@@ -168,8 +168,18 @@
           document.getElementById("potential-cost").classList.remove("red");
         }
 
-        var outputBlock1 = document.querySelector('block-card-1').output;
-        document.querySelector('scoreboard-card').totalPotentialOutput = parseFloat(outputBlock1).toFixed(2);
+
+        var outputBlock1 = parseFloat(document.querySelector('block-card-1').output).toFixed(2);
+        var oldOutput = document.querySelector('scoreboard-card').totalPotentialOutput;
+        document.querySelector('scoreboard-card').totalPotentialOutput = outputBlock1;
+        if(outputBlock1 < oldOutput) {
+          document.getElementById("potential-output").classList.add("green");
+        } else if (outputBlock1 > oldOutput) {
+          document.getElementById("potential-output").classList.add("red");
+        } else {
+          document.getElementById("potential-output").classList.remove("green");
+          document.getElementById("potential-output").classList.remove("red");
+        }
       }
 
     });
