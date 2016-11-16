@@ -155,10 +155,10 @@
 
       _updateScoreboard: function() {
         var costBlock1 = document.querySelector('block-card-1').cost;
-        document.querySelector('scoreboard-card').totalPotentialCost = costBlock1;
+        document.querySelector('scoreboard-card').totalPotentialCost = parseFloat(costBlock1).toFixed(2);
 
         var outputBlock1 = document.querySelector('block-card-1').output;
-        document.querySelector('scoreboard-card').totalPotentialOutput = outputBlock1;
+        document.querySelector('scoreboard-card').totalPotentialOutput = parseFloat(outputBlock1).toFixed(2);
       }
 
     });
