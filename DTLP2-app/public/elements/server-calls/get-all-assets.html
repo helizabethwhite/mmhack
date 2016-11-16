@@ -1,0 +1,47 @@
+<dom-module id="get-all-assets">
+    <template>
+        Assets:
+        [[response]]
+
+        <iron-ajax
+           auto
+           id="requestAllAssets"
+           method="POST"
+           url="https://time-series-store-predix.run.aws-usw02-pr.ice.predix.io/v1/datapoints"
+           headers='{
+                        "Accept" : "application/json",
+                        "Accept" : "application/x-www-form-urlencoded",
+                        "Authorization" : "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiI3Nzg4NTYzYTYyZDM0MzQxYTU2ODg4OGJhMjNiZmE0NiIsInN1YiI6ImhhY2thdGhvblVBQSIsInNjb3BlIjpbInRpbWVzZXJpZXMuem9uZXMuM2JjNDhmNzAtMTUxOS00YjI3LWE3MTMtY2JlYjZlNmZjNjBmLnVzZXIiLCJ0aW1lc2VyaWVzLnpvbmVzLjNiYzQ4ZjcwLTE1MTktNGIyNy1hNzEzLWNiZWI2ZTZmYzYwZi5xdWVyeSIsInVhYS5ub25lIiwidGltZXNlcmllcy56b25lcy4zYmM0OGY3MC0xNTE5LTRiMjctYTcxMy1jYmViNmU2ZmM2MGYuaW5nZXN0Il0sImNsaWVudF9pZCI6ImhhY2thdGhvblVBQSIsImNpZCI6ImhhY2thdGhvblVBQSIsImF6cCI6ImhhY2thdGhvblVBQSIsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJyZXZfc2lnIjoiOTQxYTMyZTEiLCJpYXQiOjE0NzkyMzY3ODIsImV4cCI6MTQ3OTI3OTk4MiwiaXNzIjoiaHR0cHM6Ly9mZmE4MDg3Yy02YmVmLTRmODMtOWZmYi01YmU2N2ZjYWMzODgucHJlZGl4LXVhYS5ydW4uYXdzLXVzdzAyLXByLmljZS5wcmVkaXguaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJmZmE4MDg3Yy02YmVmLTRmODMtOWZmYi01YmU2N2ZjYWMzODgiLCJhdWQiOlsidGltZXNlcmllcy56b25lcy4zYmM0OGY3MC0xNTE5LTRiMjctYTcxMy1jYmViNmU2ZmM2MGYiLCJoYWNrYXRob25VQUEiXX0.SiYEaMjxt-5AzKOO3tROC2kzFRckzHD21kzJ6Dbw8_WFJwGsjONQ4CyT4iaUEI6WiFDidPemrzA8V_7gylSNqGTz2oy647tT6UwUyPMTocNh_O9IrDerrmDpsrIl_1MzxFQMWqMbRtPopqPCE7I5L1HTxrLq3pjI1bsuhvsLsr_ep8q2fGZiwrJRLnKTRs3a961sYdu5WR353qn7wDmEoalGWYnHO_ei6PrUl-3NED77BtPX4IGQ-mpY0KnYgcX_ju0hhooRaUUi_DZJj770TG2R0A_M6UpzQNxR0wOqcGkUKy1XBAM3lYqA2b0c133QfA8Pja4NPlHQR6wA1zhktw",
+                        "Predix-Zone-Id" : "3bc48f70-1519-4b27-a713-cbeb6e6fc60f"
+                    }'
+           body='{
+                    "start" : "1y-ago",
+                    "tags" : [
+                          {
+                            "name" : "Gas Gen - 9H2"
+                          }
+                      ]
+                 }'
+           handle-as="json"
+           on-response="handleResponse">
+        </iron-ajax>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'get-all-assets',
+            properties: {
+                response: {
+                    type: String
+                }
+            },
+            ready: function() {
+              console.log("TEST");
+              this.$.requestAllAssets.generateRequest();
+            },
+            handleResponse: function (data) {
+                this.response = data.detail.response;
+            }
+        });
+    </script>
+</dom-module>

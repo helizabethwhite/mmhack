@@ -1,24 +1,26 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/px-card/px-card.html">
-<link rel="import" href="../../bower_components/collapsable-px-card/collapsable-px-card.html">
 <link rel="import" href="../../bower_components/px-dropdown/px-dropdown.html">
+<link rel="import" href="../../bower_components/px-chart/px-chart.html">
 
 <dom-module id="block-card-1">
 
   <template>
     <style>
+      #cost-output{
+      }
+      #cost {
+        float: left;
+        text-align: center;
+        width: 50%;
+      }
+      #output {
+        float: right;
+        text-align: center;
+        width: 50%;
+      }
       #graph {
-        background-color: #f00;
-        float: left;
-        width: 500px;
-        height: 200px;
-      }
-      #cost-output {
-        float: left;
-        width: 200px;
-      }
-      #top-info {
-
+        clear: left
       }
       .clear {
         clear: both;
@@ -28,17 +30,18 @@
       }
     </style>
     <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
-      <div id="top-info">
         <div id="cost-output">
           <h2 id="cost">Cost: $180</h2>
           <h2 id="output">Output: 400mW</h2>
         </div>
         <div id="graph">
+          <px-chart>
+            <px-chart-controls data-controls show-date-range="true"></px-chart-controls>
+          </px-chart>
         </div>
-      </div>
-
       <div class="clear">
       </div>
+<<<<<<< HEAD
       <div id="collapse">
         <h2 id="equipment">Equipment:</div>
 
@@ -61,6 +64,47 @@
       </div> --> 
       
     </div>
+=======
+
+      <div id="collapse" hidden>
+        <h2 id="equipment-title">Equipment:</h2>
+        <div class="dropdown">
+          <px-dropdown display-value="Gas Turbine 1"><px-dropdown-content extend-dropdown='true'
+            extend-dropdown-by='25' max-cont-character-width='10'
+            items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
+            {"key":"4","val":"Gas Turbine 4"}]'></px-dropdown-content></px-dropdown>
+        </div>
+        <div class="specs">
+          <p id="max-output">Frequency: 60</p>
+          <p id="frequency">Max Output: 50mW</p>
+          <p id="ramp-rate">Ramp Rate: 5</p>
+          <p id="minimum-load">Minimum Load: 25</p>
+        </div>
+        <div class="dropdown">
+          <px-dropdown display-value="Gas Turbine 2"><px-dropdown-content extend-dropdown='true'
+            extend-dropdown-by='25' max-cont-character-width='10'
+            items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
+            {"key":"4","val":"Gas Turbine 4"}]'></px-dropdown-content></px-dropdown>
+        </div>
+        <div class="specs">
+          <p id="max-output">Frequency: 60</p>
+          <p id="frequency">Max Output: 50mW</p>
+          <p id="ramp-rate">Ramp Rate: 5</p>
+          <p id="minimum-load">Minimum Load: 25</p>
+        </div>
+        <div class="dropdown">
+          <px-dropdown display-value="Gas Turbine 3"><px-dropdown-content extend-dropdown='true'
+            extend-dropdown-by='25' max-cont-character-width='10'
+            items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
+            {"key":"4","val":"Gas Turbine 4"}]'></px-dropdown-content></px-dropdown>
+        </div>
+        <div class="specs">
+          <p id="max-output">Frequency: 60</p>
+          <p id="frequency">Max Output: 50mW</p>
+          <p id="ramp-rate">Ramp Rate: 5</p>
+          <p id="minimum-load">Minimum Load: 25</p>
+        </div>
+      </div>
     </px-card>
   </template>
 

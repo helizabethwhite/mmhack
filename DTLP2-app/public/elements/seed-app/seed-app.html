@@ -1,5 +1,6 @@
 <!-- import polymer -->
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <!-- import page level css -->
 <link rel="import" href="seed-app-styles.html">
@@ -85,12 +86,12 @@
 
           <app-route
             route="[[_route]]"
-            pattern="/test"
-            active="{{_testActive}}">
+            pattern="/serverTest"
+            active="{{_serverTestActive}}">
           </app-route>
           <px-view
-            active="[[_testActive]]"
-            element-href="/elements/views/test-view.html">
+            active="[[_serverTestActive]]"
+            element-href="/elements/views/server-test-view.html">
           </px-view>
 
         </main>
@@ -138,8 +139,8 @@
               "icon": "fa-file-o"
             },
             {
-              "label": "Test",
-              "path": "/test",
+              "label": "Server Test",
+              "path": "/serverTest",
               "icon": "fa-file-o"
             }]
           }

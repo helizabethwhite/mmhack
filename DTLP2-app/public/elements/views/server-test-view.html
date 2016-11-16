@@ -1,19 +1,24 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/px-sample-cards/blank-card.html">
 <link rel="import" href="../../bower_components/px-view-header/px-view-header.html">
-<dom-module id="test-view">
+
+<!-- import custom component -->
+<link rel="import" href="../server-calls/get-all-assets.html">
+
+<dom-module id="server-test-view">
   <template>
-    <px-view-header title="TEST" style="display: block; margin-bottom: 6px;"></px-view-header>
+    <px-view-header title="Server Test Card" style="display: block; margin-bottom: 6px;"></px-view-header>
     <blank-card id="myCard">
-      Let's get part testing
+      Server Tests will be initiated here...
+        <get-all-assets></get-all-assets>
     </blank-card>
   </template>
   <script>
     Polymer({
-      is: 'test-view',
+      is: 'server-test-view',
       properties: {},
       ready: function() {
-        console.log('test-view ready()')
+        console.log('server-test-view ready()')
       }
     });
   </script>
