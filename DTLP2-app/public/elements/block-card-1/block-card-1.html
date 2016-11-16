@@ -35,8 +35,6 @@
     <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-chevron-hit="_toggleCard" onload="load()">
 
     <iron-ajax
-
-           auto
            id="requestAllAssets"
            method="GET"
            url="gendata.json"
@@ -49,8 +47,8 @@
         </iron-ajax>
       <div id="top-info">
         <div id="cost-output">
-          <h2>Cost: $<span id="cost">180</span></h2>
-          <h2>Output: <span id="output">400</span>mW</h2>
+          <h2>Average Cost: $<span id="cost">1</span>M</h2>
+          <h2>Output: <span id="output">1</span>mW</h2>
         </div>
         <div id="graph">
           <!--
@@ -95,12 +93,12 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Average Output: <span id="average-output">1485</span>mW</p>
-          <p>Max Output: <span id="max-output">1485</span>mW</p>
-          <p>Frequency: <span id="frequency">60</span></p>
-          <p>Ramp Rate: <span id="ramp-rate">5</span></p>
-          <p>Minimum Load: <span id="minimum-load">25</span></p>
-          <p>Operating Cost: <span id="operating-cost">1485</span>mW</p>
+          <p>Average Output: <span id="average-output">1</span>mW</p>
+          <p>Max Output: <span id="max-output">1</span>mW</p>
+          <p>Frequency: <span id="frequency">1</span></p>
+          <p>Ramp Rate: <span id="ramp-rate">1</span></p>
+          <p>Minimum Load: <span id="minimum-load">1</span></p>
+          <p>Operating Cost: <span id="operating-cost">1</span>mW</p>
         </div>
       </div>
 
@@ -115,12 +113,12 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Average Output: <span id="average-output">1485</span>mW</p>
-          <p>Max Output: <span id="max-output">1265</span>mW</p>
-          <p>Frequency: <span id="frequency">60</span></p>
-          <p>Ramp Rate: <span id="ramp-rate">5</span></p>
-          <p>Minimum Load: <span id="minimum-load">25</span></p>
-          <p>Operating Cost: <span id="operating-cost">1485</span>mW</p>
+          <p>Average Output: <span id="average-output">1</span>mW</p>
+          <p>Max Output: <span id="max-output">1</span>mW</p>
+          <p>Frequency: <span id="frequency">1</span></p>
+          <p>Ramp Rate: <span id="ramp-rate">1</span></p>
+          <p>Minimum Load: <span id="minimum-load">1</span></p>
+          <p>Operating Cost: <span id="operating-cost">1</span>mW</p>
         </div>
       </div>
 
@@ -135,8 +133,8 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Power Factor: <span id="power-factor">60</span></p>
-          <p>Operating Cost: <span id="operating-cost">1485</span>mW</p>
+          <p>Power Factor: <span id="power-factor">1</span></p>
+          <p>Operating Cost: <span id="operating-cost">1</span>mW</p>
         </div>
       </div>
 
@@ -160,13 +158,11 @@
         },
         cost: {
            type: Number,
-           notify: true,
-           value: 5
+           notify: true
          },
          output: {
            type: Number,
-           notify: true,
-           value: 78
+           notify: true
          },
          block: {
           type: Object,
@@ -263,10 +259,12 @@
           var blk1Baseline = gendata.aggregatedTimeSeriesData.powerVals;
           addBaselineSeries(blk1Baseline);
         });
-        this.getInitialData();
+
         //this.setData();
       },
       _sendData: function() {
+        this.getInitialData();
+
         console.log(document.querySelector("#gt1-blk1 div px-dropdown").selectedKey);
         var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey
         != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : "Gas Engine 1 - TS";
@@ -277,13 +275,11 @@
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
-        this._updateSpecsGT1(69,70,71,72);
-        this._updateSpecsGT2(2,4,6,8);
+        /*this._updateSpecsGT1(69,70,71,72,73,74);
+        this._updateSpecsGT2(2,4,6,8,10,12);
         this._updateSpecsGen1(300,400);
         this._updateBlockCost(200000);
-        this._updateBlockOutput(300000);
-
-        this.fire("scoreboard-update");
+        this._updateBlockOutput(300000);*/
       },
       _updateSpecsGT1: function(averageOutput, maxOutput, frequency, rampRate, minimumLoad, operatingCost) {
         document.querySelector("#gt1-blk1 #specs #average-output").innerHTML = averageOutput;
@@ -307,9 +303,11 @@
       },
       _updateBlockCost: function(cost) {
         document.querySelector("#cost-output #cost").innerHTML = cost;
+        this.cost = cost;
       },
       _updateBlockOutput: function(output) {
         document.querySelector("#cost-output #output").innerHTML = output;
+        this.output = output;
       },
       _testLog: function() {
 
@@ -339,7 +337,18 @@
                               this.allAssets.operatingCostData[1].operatingCost);
           this._updateSpecsGen1(this.allAssets.powerFactorData[2].powerFactor,
                                 this.allAssets.operatingCostData[2].operatingCost);
+
+          var totalBlockCost = this.allAssets.operatingCostData[0].operatingCost
+                                + this.allAssets.operatingCostData[1].operatingCost
+                                + this.allAssets.operatingCostData[2].operatingCost;
+          var totalBlockAverageOutput = this.allAssets.avgPowerData[0].avgPower
+                                + this.allAssets.avgPowerData[1].avgPower
+                                + this.allAssets.avgPowerData[2].avgPower;
+          this._updateBlockCost(totalBlockCost);
+          this._updateBlockOutput(totalBlockAverageOutput);
           console.log(data.detail.response);
+
+          this.fire("scoreboard-update");
       }
     });
     function addNewSeries(timeSeries){
