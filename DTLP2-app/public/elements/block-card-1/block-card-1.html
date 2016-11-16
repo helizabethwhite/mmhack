@@ -175,8 +175,7 @@
           <px-dropdown id="asset-dropdown" display-value="Gas Gen - 9H2">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
-              items='[{"key":"Generator 1","val":"Gas Gen - 9H2"},{"key":"Generator 2","val":"Gas Gen - 6A2"},{"key":"Generator 3"},
-              {"key":"4","val":"Gas Gen - 9A4"}]'>
+              items='[{"key":"Generator 1","val":"Gas Gen - 9H2"},{"key":"Generator 2","val":"Gas Gen - 6A2"},{"key":"Generator 3"}]'>
             </px-dropdown-content>
           </px-dropdown>
         </div>
@@ -337,7 +336,7 @@
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
-        var url = "https://serverapp.run.aws-usw02-pr.ice.predix.io/getBlockData/"
+        var url = "http://localhost:1337/getBlockData/"
         + selectedGt1 + "/" + selectedGt2 + "/" + selectedGen1;
         this.$.requestAllServerAssets.url = url;
         console.log(url);
