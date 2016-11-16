@@ -157,20 +157,22 @@
 
       _updateScoreboard: function() {
         var oldCost = 27.40;
-        var oldOutput = 4384.10;
+        var oldOutput = 4583.81
 
         var costBlock1 = document.querySelector('block-card-1').cost;
         var costBlock2 = document.querySelector('block-card-2').cost;
         var costBlock3 = document.querySelector('block-card-3').cost;
-        console.log(costBlock1);
+
         var totalCost = costBlock1 + costBlock2 + costBlock3;
-        console.log(totalCost);
+        console.log("total cost: "+totalCost);
         var totalCostFixed = parseFloat(totalCost).toFixed(2);
-        console.log(totalCostFixed);
+        console.log("total cost fixed: :"+ totalCostFixed);
+        console.log("old cost: "+oldCost);
+        console.log()
         document.querySelector('scoreboard-card').totalPotentialCost = totalCostFixed;
-        if(costBlock1 < oldCost) {
+        if(totalCost < oldCost) {
           document.getElementById("potential-cost").classList.add("green");
-        } else if (costBlock1 > oldCost) {
+        } else if (totalCost > oldCost) {
           document.getElementById("potential-cost").classList.add("red");
         } else {
           document.getElementById("potential-cost").classList.remove("green");
@@ -182,12 +184,14 @@
         var outputBlock3 = document.querySelector('block-card-3').output;
 
         var totalOutput = outputBlock1 + outputBlock2 + outputBlock3;
-        var totalOutputFixed = parseFloat(totalOutput).toFixed(2);
+        totalOutput = parseFloat(totalOutput).toFixed(2);
+        console.log("old output: "+oldOutput);
+        console.log("new output: "+ totalOutput);
 
-        document.querySelector('scoreboard-card').totalPotentialOutput = totalOutputFixed;
-        if(outputBlock1 < oldOutput) {
+        document.querySelector('scoreboard-card').totalPotentialOutput = totalOutput;
+        if(totalOutput < oldOutput) {
           document.getElementById("potential-output").classList.add("green");
-        } else if (outputBlock1 > oldOutput) {
+        } else if (totalOutput > oldOutput) {
           document.getElementById("potential-output").classList.add("red");
         } else {
           document.getElementById("potential-output").classList.remove("green");
