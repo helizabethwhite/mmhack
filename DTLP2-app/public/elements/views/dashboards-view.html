@@ -156,9 +156,18 @@
       },
 
       _updateScoreboard: function() {
-        var costBlock1 = parseFloat(document.querySelector('block-card-1').cost).toFixed(2);
-        var oldCost = document.querySelector('scoreboard-card').totalPotentialCost;
-        document.querySelector('scoreboard-card').totalPotentialCost = costBlock1;
+        var oldCost = 27.40;
+        var oldOutput = 4384.10;
+
+        var costBlock1 = document.querySelector('block-card-1').cost;
+        var costBlock2 = document.querySelector('block-card-2').cost;
+        var costBlock3 = document.querySelector('block-card-3').cost;
+        console.log(costBlock1);
+        var totalCost = costBlock1 + costBlock2 + costBlock3;
+        console.log(totalCost);
+        var totalCostFixed = parseFloat(totalCost).toFixed(2);
+        console.log(totalCostFixed);
+        document.querySelector('scoreboard-card').totalPotentialCost = totalCostFixed;
         if(costBlock1 < oldCost) {
           document.getElementById("potential-cost").classList.add("green");
         } else if (costBlock1 > oldCost) {
@@ -168,10 +177,14 @@
           document.getElementById("potential-cost").classList.remove("red");
         }
 
+        var outputBlock1 = document.querySelector('block-card-1').output;
+        var outputBlock2 = document.querySelector('block-card-2').output;
+        var outputBlock3 = document.querySelector('block-card-3').output;
 
-        var outputBlock1 = parseFloat(document.querySelector('block-card-1').output).toFixed(2);
-        var oldOutput = document.querySelector('scoreboard-card').totalPotentialOutput;
-        document.querySelector('scoreboard-card').totalPotentialOutput = outputBlock1;
+        var totalOutput = outputBlock1 + outputBlock2 + outputBlock3;
+        var totalOutputFixed = parseFloat(totalOutput).toFixed(2);
+
+        document.querySelector('scoreboard-card').totalPotentialOutput = totalOutputFixed;
         if(outputBlock1 < oldOutput) {
           document.getElementById("potential-output").classList.add("green");
         } else if (outputBlock1 > oldOutput) {
