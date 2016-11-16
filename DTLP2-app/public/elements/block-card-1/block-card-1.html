@@ -3,7 +3,6 @@
 <link rel="import" href="../../bower_components/collapsable-px-card/collapsable-px-card.html">
 <link rel="import" href="../../bower_components/px-dropdown/px-dropdown.html">
 <link rel="import" href="../../bower_components/px-chart/px-chart.html">
-<link rel="import" href="../../bower_components/px-buttons-design/px-buttons-design.html">
 
 <dom-module id="block-card-1">
 
@@ -32,30 +31,25 @@
         margin-top: 0;
       }
     </style>
+<<<<<<< HEAD
     <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-chevron-hit="_toggleCard" onload="load()">
     <!--<iron-ajax
+=======
+    <iron-ajax
+>>>>>>> ac394a37d8c190bd4cc0403ea63c68f2bc7a192c
            auto
            id="requestAllAssets"
-           method="POST"
+           method="GET"
            url="gendata.json"
-           headers='{
-                        "Accept" : "application/json",
-                        "Accept" : "application/x-www-form-urlencoded",
-                        "Authorization" : "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImxlZ2FjeS10b2tlbi1rZXkiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiI3Nzg4NTYzYTYyZDM0MzQxYTU2ODg4OGJhMjNiZmE0NiIsInN1YiI6ImhhY2thdGhvblVBQSIsInNjb3BlIjpbInRpbWVzZXJpZXMuem9uZXMuM2JjNDhmNzAtMTUxOS00YjI3LWE3MTMtY2JlYjZlNmZjNjBmLnVzZXIiLCJ0aW1lc2VyaWVzLnpvbmVzLjNiYzQ4ZjcwLTE1MTktNGIyNy1hNzEzLWNiZWI2ZTZmYzYwZi5xdWVyeSIsInVhYS5ub25lIiwidGltZXNlcmllcy56b25lcy4zYmM0OGY3MC0xNTE5LTRiMjctYTcxMy1jYmViNmU2ZmM2MGYuaW5nZXN0Il0sImNsaWVudF9pZCI6ImhhY2thdGhvblVBQSIsImNpZCI6ImhhY2thdGhvblVBQSIsImF6cCI6ImhhY2thdGhvblVBQSIsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJyZXZfc2lnIjoiOTQxYTMyZTEiLCJpYXQiOjE0NzkyMzY3ODIsImV4cCI6MTQ3OTI3OTk4MiwiaXNzIjoiaHR0cHM6Ly9mZmE4MDg3Yy02YmVmLTRmODMtOWZmYi01YmU2N2ZjYWMzODgucHJlZGl4LXVhYS5ydW4uYXdzLXVzdzAyLXByLmljZS5wcmVkaXguaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJmZmE4MDg3Yy02YmVmLTRmODMtOWZmYi01YmU2N2ZjYWMzODgiLCJhdWQiOlsidGltZXNlcmllcy56b25lcy4zYmM0OGY3MC0xNTE5LTRiMjctYTcxMy1jYmViNmU2ZmM2MGYiLCJoYWNrYXRob25VQUEiXX0.SiYEaMjxt-5AzKOO3tROC2kzFRckzHD21kzJ6Dbw8_WFJwGsjONQ4CyT4iaUEI6WiFDidPemrzA8V_7gylSNqGTz2oy647tT6UwUyPMTocNh_O9IrDerrmDpsrIl_1MzxFQMWqMbRtPopqPCE7I5L1HTxrLq3pjI1bsuhvsLsr_ep8q2fGZiwrJRLnKTRs3a961sYdu5WR353qn7wDmEoalGWYnHO_ei6PrUl-3NED77BtPX4IGQ-mpY0KnYgcX_ju0hhooRaUUi_DZJj770TG2R0A_M6UpzQNxR0wOqcGkUKy1XBAM3lYqA2b0c133QfA8Pja4NPlHQR6wA1zhktw",
-                        "Predix-Zone-Id" : "3bc48f70-1519-4b27-a713-cbeb6e6fc60f"
-                    }'
-           body='{
-                    "start" : "1y-ago",
-                    "tags" : [
-                          {
-                            "name" : "Gas Gen - 9H2"
-                          }
-                      ]
-                 }'
            handle-as="json"
            on-response="handleResponse">
+<<<<<<< HEAD
         </iron-ajax>-->
 
+=======
+        </iron-ajax>
+    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
+>>>>>>> ac394a37d8c190bd4cc0403ea63c68f2bc7a192c
       <div id="top-info">
         <div id="cost-output">
           <h2>Cost: $<span id="cost">180</span></h2>
@@ -104,7 +98,7 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Max Output: <span id="max-output">50</span>mW</p>
+          <p>Max Output: <span id="max-output">1485</span>mW</p>
           <p>Frequency: <span id="frequency">60</span></p>
           <p>Ramp Rate: <span id="ramp-rate">5</span></p>
           <p>Minimum Load: <span id="minimum-load">25</span></p>
@@ -113,7 +107,7 @@
 
       <div id="gt2-blk1" class="block" >
         <div class="dropdown">
-          <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7IEA">
+          <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7FB.04">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
               items='[{"key":"Gas Engine 1 - TS","val":"Gas Turbine - 7IEA"},{"key":"Gas Engine 2 - TS","val":"Gas Turbine - 7FB.04"},
@@ -122,7 +116,7 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Max Output: <span id="max-output">50</span>mW</p>
+          <p>Max Output: <span id="max-output">1265</span>mW</p>
           <p>Frequency: <span id="frequency">60</span></p>
           <p>Ramp Rate: <span id="ramp-rate">5</span></p>
           <p>Minimum Load: <span id="minimum-load">25</span></p>
@@ -159,72 +153,33 @@
     Polymer({
       is: 'block-card-1',
       properties: {
-        cost: {
-          type: Number,
-          notify: true,
-          value: 5
+        allAssets: {
+          type: Object,
+          notify: true
         },
-        output: {
-          type: Number,
-          notify: true,
-          value: 78
-        }
+        cost: {
+           type: Number,
+           notify: true,
+           value: 5
+         },
+         output: {
+           type: Number,
+           notify: true,
+           value: 78
+         },
+         block: {
+          type: Object,
+          notify: true
+         }
       },
       getInitialData: function() {
 
           // grab all assets
 
           this.$.requestAllAssets.generateRequest(); // leaves results in this.$.assets
-          // var assets = this.$.assets.tags;
-          // random query using 3 (or so) assets as a "block" (make sure these are valid)
-
-          // var asset1 = assets[0];
-          // var asset2 = assets[1];
-          // var asset3 = assets[2];
-
-          //this.$.block = [asset1, asset2, asset3]; // access this in the getBlock function
 
           // get corresponding block + asset data
           //this.$.requestBlock.generateRequest(); // leaves results in this.$.block
-
-          /*var dummyData = {
-            "aggregatedTimeSeriesData": {
-              "names": [
-                "Steam Engine 1 - TS",
-                "Steam Engine 2 - TS"
-              ],
-              "powerVals": [
-                938,
-                1031.8,
-                886.1,
-                938,
-                989.9,
-                979.9
-              ]
-            },
-            "avgPowerData": [
-              {
-                "name": "Steam Engine 1 - TS",
-                "avgPower": 518.37782217782
-              },
-              {
-                "name": "Steam Engine 2 - TS",
-                "avgPower": 418.03726273726
-              }
-            ],
-            "maxPowerData": [
-              {
-                "name": "Steam Engine 1 - TS",
-                "maxPower": 570.9
-              },
-              {
-                "name": "Steam Engine 2 - TS",
-                "maxPower": 460.9
-              }
-            ]
-          };*/
-
-          console.log(this.allAssets);
 
           // call update functions to show data on the page
       },
@@ -301,12 +256,16 @@
           }
       },
       ready: function() {
+<<<<<<< HEAD
         console.log('partpicker-view ready()');
         //Add local timeseries data... needs to be updated to respond to requests 
         $(document).ready(function(e) {
           var blk1Baseline = gendata.aggregatedTimeSeriesData.powerVals;
           addBaselineSeries(blk1Baseline);
         });
+=======
+        this.getInitialData();
+>>>>>>> ac394a37d8c190bd4cc0403ea63c68f2bc7a192c
         //this.setData();
       },
       _sendData: function() {
@@ -314,14 +273,14 @@
         var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey
         != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : "Gas Engine 1 - TS";
         var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : "Gas Engine 1 - TS";
+        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : "Gas Turbine - 7FB.04";
         var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey
         != '' ? document.querySelector("#gen1-blk1 div px-dropdown").selectedKey : 1;
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
-        this._updateSpecsGT1(69,70,71,72);
-        this._updateSpecsGT2(2,4,6,8);
+        //this._updateSpecsGT1(69,70,71,72);
+        //this._updateSpecsGT2(2,4,6,8);
         this._updateSpecsGen1(300,400,500);
         this._updateBlockCost(200000);
         this._updateBlockOutput(300000);
@@ -350,6 +309,9 @@
       _updateBlockOutput: function(output) {
         document.querySelector("#cost-output #output").innerHTML = output;
       },
+      _testLog: function() {
+
+      },
       _toggleCard: function() {
         console.log("collapse card");
         if (document.querySelector("#collapse").hasAttribute("hidden")) {
@@ -359,8 +321,11 @@
           document.querySelector("#collapse").setAttribute("hidden", "true");
         }
       },
-      getCost: function() {
-        return this.cost;
+      handleResponse: function (data) { // return function from calling server for allAssets
+          this.allAssets = data.detail.response;
+          this._updateSpecsGT1(this.allAssets.maxPowerData[0].maxPower,70,71,72);
+          this._updateSpecsGT2(this.allAssets.maxPowerData[1].maxPower,4,6,8);
+          console.log(data.detail.response);
       }
     });
     function addNewSeries(timeSeries){
