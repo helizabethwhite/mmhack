@@ -4,7 +4,7 @@
 <link rel="import" href="../../bower_components/px-dropdown/px-dropdown.html">
 <link rel="import" href="../../bower_components/px-chart/px-chart.html">
 
-<dom-module id="block-card-1">
+<dom-module id="block-card-3">
   <template>
     <style>
       #cost-output h2 {
@@ -30,7 +30,7 @@
         margin-top: 0;
       }
     </style>
-    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
+    <px-card header-text="Block 3" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
 
     <iron-ajax
            id="requestAllAssets"
@@ -203,7 +203,7 @@
   <script type="text/javascript" language="javascript" src="gendata.json"></script>
   <script>
     Polymer({
-      is: 'block-card-1',
+      is: 'block-card-3',
       properties: {
         allAssets: {
           type: Object,
@@ -336,7 +336,7 @@
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
-        var url = "https://serverapp.run.aws-usw02-pr.ice.predix.io/getBlockData/"
+        var url = "http://localhost:1337/getBlockData/"
         + selectedGt1 + "/" + selectedGt2 + "/" + selectedGen1;
         this.$.requestAllServerAssets.url = url;
         console.log(url);
@@ -465,7 +465,7 @@
         this._updateBlockOutput(totalBlockAverageOutput);
         console.log(data.detail.response);
 
-        this.powerValsServer = this.allServerAssets.aggregatedTimeSeriesData.powerVals;
+        this.powerValsServer = this.allAssets.aggregatedTimeSeriesData.powerVals;
         this._updateGraphNew(this.powerValsServer);
         this._updateGraphBaseline(this.powerValsLocal);
         console.log(this.powerValsServer);
