@@ -31,6 +31,7 @@
         margin-top: 0;
       }
     </style>
+    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-chevron-hit="_toggleCard">
     <iron-ajax
            auto
            id="requestAllAssets"
@@ -165,6 +166,7 @@
           notify: true,
           value: 78
         }
+      },
       getInitialData: function() {
 
           // grab all assets
