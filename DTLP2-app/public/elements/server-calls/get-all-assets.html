@@ -1,10 +1,8 @@
-<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-ajax/iron-ajax.html">
-
 <dom-module id="get-all-assets">
     <template>
-        Assets: 
+        Assets:
         [[response]]
-        
+
         <iron-ajax
            auto
            id="requestAllAssets"
@@ -26,9 +24,9 @@
                  }'
            handle-as="json"
            on-response="handleResponse">
-        </iron-ajax>          
+        </iron-ajax>
     </template>
-    
+
     <script>
         Polymer({
             is: 'get-all-assets',
@@ -38,7 +36,8 @@
                 }
             },
             ready: function() {
-                this.$.requestAllAssets.generateRequest();
+              console.log("TEST");
+              this.$.requestAllAssets.generateRequest();
             },
             handleResponse: function (data) {
                 this.response = data.detail.response;
