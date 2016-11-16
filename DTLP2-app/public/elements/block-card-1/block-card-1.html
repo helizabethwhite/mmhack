@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/px-card/px-card.html">
+<link rel="import" href="../../bower_components/collapsable-px-card/collapsable-px-card.html">
 <link rel="import" href="../../bower_components/px-dropdown/px-dropdown.html">
 
 <dom-module id="block-card-1">
@@ -26,7 +27,7 @@
         width: 200px;
       }
     </style>
-    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog">
+    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
       <div id="top-info">
         <div id="cost-output">
           <h2 id="cost">Cost: $180</h2>
@@ -38,7 +39,7 @@
 
       <div class="clear">
       </div>
-
+      <div id="collapse">
       <h2 id="equipment-title">Equipment:</h2>
       <div class="dropdown">
         <px-dropdown display-value="Gas Turbine 1"><px-dropdown-content extend-dropdown='true'
@@ -76,6 +77,7 @@
         <p id="ramp-rate">Ramp Rate: 5</p>
         <p id="minimum-load">Minimum Load: 25</p>
       </div>
+    </div>
     </px-card>
   </template>
 
@@ -88,10 +90,16 @@
       },
       _testLog: function() {
         console.log("TEST TEST TEST");
+      },
+      _toggleCard: function() {
+        console.log("collapse card");
+        if (document.querySelector("#collapse").hasAttribute("hidden")) {
+          document.querySelector("#collapse").removeAttribute("hidden");
+        }
+        else {
+          document.querySelector("#collapse").setAttribute("hidden", "true");
+        }
       }
-
-
-
     });
   </script>
 
