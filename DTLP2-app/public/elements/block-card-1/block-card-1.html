@@ -351,16 +351,16 @@
         this._updateBlockOutput(300000);*/
       },
       _updateSpecsGT1: function(averageOutput, maxOutput, frequency, rampRate, minimumLoad, operatingCost) {
-        document.querySelector("#gt1-blk1 #specs #average-output").innerHTML = parseFloat(averageOutput).toFixed(2);
-        document.querySelector("#gt1-blk1 #specs #max-output").innerHTML = parseFloat(maxOutput).toFixed(2);
+        document.querySelector("#gt1-blk1 #specs #average-output").innerHTML = parseFloat(averageOutput).toFixed(2)+"mW";
+        document.querySelector("#gt1-blk1 #specs #max-output").innerHTML = parseFloat(maxOutput).toFixed(2)+"mW";
         document.querySelector("#gt1-blk1 #specs #frequency").innerHTML = parseFloat(frequency).toFixed(2);
         document.querySelector("#gt1-blk1 #specs #ramp-rate").innerHTML = parseFloat(rampRate).toFixed(2);
         document.querySelector("#gt1-blk1 #specs #minimum-load").innerHTML = parseFloat(minimumLoad).toFixed(2);
         document.querySelector("#gt1-blk1 #specs #operating-cost").innerHTML = parseFloat(operatingCost).toFixed(2);
       },
       _updateSpecsGT2: function(averageOutput, maxOutput, frequency, rampRate, minimumLoad, operatingCost) {
-        document.querySelector("#gt2-blk1 #specs #average-output").innerHTML = parseFloat(averageOutput).toFixed(2);
-        document.querySelector("#gt2-blk1 #specs #max-output").innerHTML = parseFloat(maxOutput).toFixed(2);
+        document.querySelector("#gt2-blk1 #specs #average-output").innerHTML = parseFloat(averageOutput).toFixed(2)+"mW";
+        document.querySelector("#gt2-blk1 #specs #max-output").innerHTML = parseFloat(maxOutput).toFixed(2)+"mW";
         document.querySelector("#gt2-blk1 #specs #frequency").innerHTML = parseFloat(frequency).toFixed(2);
         document.querySelector("#gt2-blk1 #specs #ramp-rate").innerHTML = parseFloat(rampRate).toFixed(2);
         document.querySelector("#gt2-blk1 #specs #minimum-load").innerHTML = parseFloat(minimumLoad).toFixed(2);
