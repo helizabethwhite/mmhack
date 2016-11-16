@@ -1,23 +1,26 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/px-card/px-card.html">
 <link rel="import" href="../../bower_components/px-dropdown/px-dropdown.html">
+<link rel="import" href="../../bower_components/px-chart/px-chart.html">
 
 <dom-module id="block-card-1">
 
   <template>
     <style>
+      #cost-output{
+      }
+      #cost {
+        float: left;
+        text-align: center;
+        width: 50%;
+      }
+      #output {
+        float: right;
+        text-align: center;
+        width: 50%;
+      }
       #graph {
-        background-color: #f00;
-        float: left;
-        width: 500px;
-        height: 200px;
-      }
-      #cost-output {
-        float: left;
-        width: 200px;
-      }
-      #top-info {
-
+        clear: left
       }
       .clear {
         clear: both;
@@ -27,15 +30,15 @@
       }
     </style>
     <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
-      <div id="top-info">
         <div id="cost-output">
           <h2 id="cost">Cost: $180</h2>
           <h2 id="output">Output: 400mW</h2>
         </div>
         <div id="graph">
+          <px-chart>
+            <px-chart-controls data-controls show-date-range="true"></px-chart-controls>
+          </px-chart>
         </div>
-      </div>
-
       <div class="clear">
       </div>
 
