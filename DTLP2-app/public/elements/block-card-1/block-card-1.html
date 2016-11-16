@@ -477,6 +477,7 @@
 
         this.powerValsServer = this.allAssets.aggregatedTimeSeriesData.powerVals;
         this._updateGraphNew(this.powerValsServer);
+        this._updateGraphBaseline(this.powerValsLocal);
         console.log(this.powerValsServer);
 
         document.querySelector('px-spinner').setAttribute("finished","true");
