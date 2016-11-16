@@ -143,12 +143,30 @@
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Average Output: <span id="average-output">1</span>mW</p>
-          <p>Max Output: <span id="max-output">1</span>mW</p>
-          <p>Frequency: <span id="frequency">1</span></p>
-          <p>Ramp Rate: <span id="ramp-rate">1</span></p>
-          <p>Minimum Load: <span id="minimum-load">1</span></p>
-          <p>Operating Cost: <span id="operating-cost">1</span>mW</p>
+          <span class="collapse-span">
+          <p class="p-left-column">Average Output: </p>
+          <p class="p-right-column" id="average-output">1mW</p>
+        </span>
+        <span class="collapse-span">
+          <p class="p-left-column">Max Output: </p>
+          <p class="p-right-column" id="max-output">1mW</p>
+        </span>
+        <span class="collapse-span">
+          <p class="p-left-column">Frequency: </p>
+          <p class="p-right-column" id="frequency">1</p>
+        </span>
+        <span class="collapse-span">
+          <p class="p-left-column">Ramp Rate: </p>
+          <p class="p-right-column" id="ramp-rate">1</p>
+        </span>
+        <span class="collapse-span">
+          <p class="p-left-column">Minimum Load: </p>
+          <p class="p-right-column" id="minimum-load">1</p>
+        </span>
+        <span class="collapse-span">
+          <p class="p-left-column">Operating Cost: </p>
+          <p class="p-right-column" id="operating-cost">1</p>
+        </span>
         </div>
       </div>
 
@@ -157,14 +175,19 @@
           <px-dropdown id="asset-dropdown" display-value="Gas Gen - 9H2">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
-              items='[{"key":"Generator 1","val":"Gas Gen - 9H2"},{"key":"Generator 2","val":"Gas Gen - 6A2"},{"key":"Generator 3"},
-              {"key":"4","val":"Gas Gen - 9A4"}]'>
+              items='[{"key":"Generator 1","val":"Gas Gen - 9H2"},{"key":"Generator 2","val":"Gas Gen - 6A2"},{"key":"Generator 3"}]'>
             </px-dropdown-content>
           </px-dropdown>
         </div>
         <div id="specs">
-          <p>Power Factor: <span id="power-factor">1</span></p>
-          <p>Operating Cost: <span id="operating-cost">1</span>mW</p>
+        <span class="collapse-span">
+          <p class="p-left-column">Power Factor: </p>
+          <p class="p-right-column" id="power-factor">1</p>
+        </span>
+        <span class="collapse-span">
+          <p class="p-left-column">Operating Cost: </p>
+          <p class="p-right-column" id="operating-cost">1</p>
+        </span>
         </div>
       </div>
 
@@ -313,7 +336,7 @@
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
-        var url = "https://serverapp.run.aws-usw02-pr.ice.predix.io/getBlockData/"
+        var url = "http://localhost:1337/getBlockData/"
         + selectedGt1 + "/" + selectedGt2 + "/" + selectedGen1;
         this.$.requestAllServerAssets.url = url;
         console.log(url);
