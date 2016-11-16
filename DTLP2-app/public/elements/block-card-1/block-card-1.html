@@ -154,6 +154,10 @@
            type: Number,
            notify: true,
            value: 78
+         },
+         block {
+          type: Object,
+          notify: true
          }
       },
       getInitialData: function() {
@@ -161,57 +165,9 @@
           // grab all assets
 
           this.$.requestAllAssets.generateRequest(); // leaves results in this.$.assets
-
-          // var assets = this.$.assets.tags;
-          // random query using 3 (or so) assets as a "block" (make sure these are valid)
-
-          // var asset1 = assets[0];
-          // var asset2 = assets[1];
-          // var asset3 = assets[2];
-
-          //this.$.block = [asset1, asset2, asset3]; // access this in the getBlock function
-
+          
           // get corresponding block + asset data
           //this.$.requestBlock.generateRequest(); // leaves results in this.$.block
-
-          /*var dummyData = {
-            "aggregatedTimeSeriesData": {
-              "names": [
-                "Steam Engine 1 - TS",
-                "Steam Engine 2 - TS"
-              ],
-              "powerVals": [
-                938,
-                1031.8,
-                886.1,
-                938,
-                989.9,
-                979.9
-              ]
-            },
-            "avgPowerData": [
-              {
-                "name": "Steam Engine 1 - TS",
-                "avgPower": 518.37782217782
-              },
-              {
-                "name": "Steam Engine 2 - TS",
-                "avgPower": 418.03726273726
-              }
-            ],
-            "maxPowerData": [
-              {
-                "name": "Steam Engine 1 - TS",
-                "maxPower": 570.9
-              },
-              {
-                "name": "Steam Engine 2 - TS",
-                "maxPower": 460.9
-              }
-            ]
-          };*/
-
-          //console.log(this.allAssets);
 
           // call update functions to show data on the page
       },
