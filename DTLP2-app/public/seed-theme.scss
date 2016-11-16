@@ -4,7 +4,27 @@
 
 // Tools
 @import "px-mixins-design/_tools.mixins.scss";
+// Generic
+@import "px-normalize-design/_generic.normalize.scss";
+@import "px-box-sizing-design/_generic.box-sizing.scss";
+@import "px-helpers-design/_generic.helpers.scss";
 
+// Base
+@import "px-flexbox-design/_base.flexbox.scss";
+@import "px-viewport-design/_base.viewport.scss";
+@import "px-typography-design/_base.typography.scss";
+
+// Meta
+
+// Objects
+
+// Component
+// Your css goes in here
+
+// Trumps
+@import "inuit-clearfix/_trumps.clearfix.scss";
+@import "px-spacing-responsive-design/_trumps.spacing-responsive.scss";
+@import "px-widths-responsive-design/_trumps.widths-responsive.scss";
 // theme variables
 $predix-font-family : "GE Inspira Sans", sans-serif !default;
 $px-page-html-background-color: $gray9;
