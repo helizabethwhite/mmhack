@@ -467,6 +467,7 @@
 
         this.powerValsServer = this.allAssets.aggregatedTimeSeriesData.powerVals;
         this._updateGraphNew(this.powerValsServer);
+        this._updateGraphBaseline(this.powerValsLocal);
         console.log(this.powerValsServer);
 
         this.fire("scoreboard-update");
