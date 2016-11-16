@@ -1,0 +1,41 @@
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-ajax/iron-ajax.html">
+
+<dom-module id="timeseries-login">
+    <template>
+        Auth Status...
+        [[response]]
+        
+        <iron-ajax
+           id="requestAuth"
+           method="POST"
+           url="https://ffa8087c-6bef-4f83-9ffb-5be67fcac388.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token"
+           params='{
+                        "Pragma" : "no-cache",
+                        "Cache-Control" : "no-cache"
+                   }'
+           contentType="application/x-www-form-urlencoded"
+           headers='{
+                        "authorization" : "Basic aGFja2F0aG9uVUFBOnNlY3JldA=="
+                    }'
+           handle-as="json"
+           on-response="handleResponse">
+        </iron-ajax>          
+    </template>
+    
+    <script>
+        Polymer({
+            is: 'timeseries-login',
+            properties: {
+                response: {
+                    type: String
+                }
+            },
+            ready: function() {
+                this.$.requestAuth.generateRequest();
+            },
+            handleResponse: function (data) {
+                this.response = data.detail.response;
+            }
+        });
+    </script>
+</dom-module>
