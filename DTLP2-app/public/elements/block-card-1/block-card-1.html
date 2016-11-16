@@ -31,7 +31,7 @@
         margin-top: 0;
       }
     </style>
-    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
+    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-chevron-hit="_toggleCard">
       <div id="top-info">
         <div id="cost-output">
           <h2>Cost: $<span id="cost">180</span></h2>
@@ -132,7 +132,18 @@
   <script>
     Polymer({
       is: 'block-card-1',
-      properties: {},
+      properties: {
+        cost: {
+          type: Number,
+          notify: true,
+          value: 5
+        },
+        output: {
+          type: Number,
+          notify: true,
+          value: 78
+        }
+      },
       // this function is used to fill the page with proper asset/block data from the db
       setData: function() {
           // get the data from the db
@@ -206,7 +217,7 @@
           }
       },
       ready: function() {
-        console.log('partpicker-view ready()')
+        console.log('partpicker-view ready()');
         //this.setData();
       },
       _sendData: function() {
@@ -225,6 +236,8 @@
         this._updateSpecsGen1(300,400,500);
         this._updateBlockCost(200000);
         this._updateBlockOutput(300000);
+
+        this.fire("scoreboard-update");
       },
       _updateSpecsGT1: function(maxOutput, frequency, rampRate, minimumLoad) {
         document.querySelector("#gt1-blk1 #specs #max-output").innerHTML = maxOutput;
@@ -248,9 +261,6 @@
       _updateBlockOutput: function(output) {
         document.querySelector("#cost-output #output").innerHTML = output;
       },
-      _testLog: function() {
-
-      },
       _toggleCard: function() {
         console.log("collapse card");
         if (document.querySelector("#collapse").hasAttribute("hidden")) {
@@ -259,6 +269,9 @@
         else {
           document.querySelector("#collapse").setAttribute("hidden", "true");
         }
+      },
+      getCost: function() {
+        return this.cost;
       }
     });
   </script>
