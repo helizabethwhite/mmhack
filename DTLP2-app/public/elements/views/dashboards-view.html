@@ -29,7 +29,7 @@
     </iron-ajax>-->
 
     <scoreboard-card></scoreboard-card>
-    <block-card-1></block-card-1>
+    <block-card-1 on-scoreboard-update="_updateScoreboard"></block-card-1>
 
     <!--<px-deck-index
       view-service-base-url="[[viewServiceBaseUrl]]"
@@ -87,6 +87,7 @@
       },
 
       ready: function ready() {
+
         var _this = this;
         this.$.contextBrowser.handlers = {
           // getChildren fires when a node is 'selected'
@@ -151,6 +152,14 @@
         this._selectedContextTag = item.id;
         this.$.decksIronAjax.generateRequest();
       },
+
+      _updateScoreboard: function() {
+        var costBlock1 = document.querySelector('block-card-1').cost;
+        document.querySelector('scoreboard-card').totalPotentialCost = costBlock1;
+
+        var outputBlock1 = document.querySelector('block-card-1').output;
+        document.querySelector('scoreboard-card').totalPotentialOutput = outputBlock1;
+      }
 
     });
   </script>
