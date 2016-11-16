@@ -42,6 +42,16 @@
 
         </iron-ajax>
 
+        <iron-ajax
+               id="requestAllServerAssets"
+               method="GET"
+               url="gendata.json"
+               handle-as="json"
+               on-response="handleServerResponse"
+               last-response="{{serverData}}">
+
+            </iron-ajax>
+
       <div id="top-info">
         <div id="cost-output">
           <h2>Average Cost: $<span id="cost">1</span>M</h2>
@@ -150,6 +160,18 @@
       is: 'block-card-1',
       properties: {
         allAssets: {
+          type: Object,
+          notify: true
+        },
+        allServerAssets: {
+          type: Object,
+          notify: true
+        },
+        powerValsLocal: {
+          type: Object,
+          notify: true
+        },
+        powerValsServer: {
           type: Object,
           notify: true
         },
@@ -342,9 +364,50 @@
           this._updateBlockOutput(totalBlockAverageOutput);
           console.log(data.detail.response);
 
+
+          this.powerValsLocal = this.allAssets.aggregatedTimeSeriesData.powerVals;
+          console.log(this.powerValsLocal);
+
           this.fire("scoreboard-update");
-      }
-    });
+    },
+
+    handleServerResponse: function (data) { // return function from calling server for allAssets from server
+        this.allServerAssets = data.detail.response;
+        console.log(this.data);
+        this._updateSpecsGT1(this.allAssets.avgPowerData[0].avgPower,
+                            this.allAssets.maxPowerData[0].maxPower,
+                            this.allAssets.frequencyData[0].frequency,
+                            this.allAssets.rampRateData[0].rampRate,
+                            this.allAssets.minimumLoadData[0].minimumLoad,
+                            this.allAssets.operatingCostData[0].operatingCost
+                          );
+        this._updateSpecsGT2(this.allAssets.avgPowerData[1].avgPower,
+                            this.allAssets.maxPowerData[1].maxPower,
+                            this.allAssets.frequencyData[1].frequency,
+                            this.allAssets.rampRateData[1].rampRate,
+                            this.allAssets.minimumLoadData[1].minimumLoad,
+                            this.allAssets.operatingCostData[1].operatingCost);
+        this._updateSpecsGen1(this.allAssets.powerFactorData[0].powerFactor,
+                              this.allAssets.operatingCostData[2].operatingCost);
+
+        var totalBlockCost = this.allAssets.operatingCostData[0].operatingCost
+                              + this.allAssets.operatingCostData[1].operatingCost
+                              + this.allAssets.operatingCostData[2].operatingCost;
+        var totalBlockAverageOutput = this.allAssets.avgPowerData[0].avgPower
+                              + this.allAssets.avgPowerData[1].avgPower;
+        this._updateBlockCost(totalBlockCost);
+        this._updateBlockOutput(totalBlockAverageOutput);
+        console.log(data.detail.response);
+
+        this.powerValsServer = this.allAssets.aggregatedTimeSeriesData.powerVals;
+        console.log(this.powerValsServer);
+
+        this.fire("scoreboard-update");
+    }
+  }
+
+  );
+
     function addNewSeries(timeSeries){
       document.querySelector("#blk1-new").seriesObj = {
         blk1NewData: timeSeries,
