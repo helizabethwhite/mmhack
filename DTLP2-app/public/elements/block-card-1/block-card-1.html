@@ -22,6 +22,14 @@
       .dropdown {
         width: 200px;
       }
+      .block {
+        width: 200px;
+        float: left;
+        margin-left: 20px;
+      }
+      #equipment {
+        margin-top: 0;
+      }
     </style>
     <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog" on-chevron-hit="_toggleCard">
       <div id="top-info">
@@ -49,7 +57,7 @@
                 };
           -->
           <px-chart>
-            
+
           </px-chart>
         </div>
       </div>
@@ -59,7 +67,7 @@
       <div id="collapse" hidden="true">
         <h2 id="equipment">Equipment:</h2>
 
-      <div id="gt1-blk1">
+      <div id="gt1-blk1" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine 1">
             <px-dropdown-content extend-dropdown='true'
@@ -77,7 +85,7 @@
         </div>
       </div>
 
-      <div id="gt2-blk1">
+      <div id="gt2-blk1" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine 2">
             <px-dropdown-content extend-dropdown='true'
@@ -95,7 +103,7 @@
         </div>
       </div>
 
-      <div id="gen1-blk1">
+      <div id="gen1-blk1" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Generator">
             <px-dropdown-content extend-dropdown='true'
@@ -111,8 +119,12 @@
         </div>
       </div>
 
+      <div class="clear">
+      </div>
+
+      <button on-click="_sendData">Submit</button>
     </div>
-    <button on-click="_sendData">Submit</button>
+
     </px-card>
   </template>
 
