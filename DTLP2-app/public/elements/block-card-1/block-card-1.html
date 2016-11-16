@@ -73,8 +73,8 @@
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7IEA">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
-              items='[{"key":"1","val":"Gas Turbine - 7IEA"},{"key":"2","val":"Gas Turbine - 7FB.04"},
-              {"key":"3","val":"Gas Turbine - 6FA.01"}, {"key":"4","val":"Gas Turbine - 91E"}]'>
+              items='[{"key":"Gas Engine 1 - TS","val":"Gas Turbine - 7IEA"},{"key":"Gas Engine 2 - TS","val":"Gas Turbine - 7FB.04"},
+              {"key":"Gas Engine 3 - TS","val":"Gas Turbine - 6FA.01"}]'>
             </px-dropdown-content>
           </px-dropdown>
         </div>
@@ -91,8 +91,8 @@
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7IEA">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
-              items='[{"key":"1","val":"Gas Turbine - 7IEA"},{"key":"2","val":"Gas Turbine - 7FB.04"},
-              {"key":"3","val":"Gas Turbine - 6FA.01"},{"key":"4","val":"Gas Turbine - 91E"}]'>
+              items='[{"key":"Gas Engine 1 - TS","val":"Gas Turbine - 7IEA"},{"key":"Gas Engine 2 - TS","val":"Gas Turbine - 7FB.04"},
+              {"key":"Gas Engine 3 - TS","val":"Gas Turbine - 6FA.01"}]'>
             </px-dropdown-content>
           </px-dropdown>
         </div>
@@ -212,9 +212,9 @@
       _sendData: function() {
         console.log(document.querySelector("#gt1-blk1 div px-dropdown").selectedKey);
         var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : 1;
+        != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : "Gas Engine 1 - TS";
         var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : 1;
+        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : "Gas Engine 1 - TS";
         var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey
         != '' ? document.querySelector("#gen1-blk1 div px-dropdown").selectedKey : 1;
 
