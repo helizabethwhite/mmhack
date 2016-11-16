@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-card/px-card.html">
+
+<dom-module id="scoreboard-card">
+
+  <template>
+    <px-card>
+      <div class="scoreboard">
+        <div class="left-aligned">
+          <div class="title">Current</div> 
+          <span>
+            <div class="left-aligned">
+              Cost
+              <div class="score-large-text">
+              $156 M
+              </div>
+            </div>
+            
+            <div class="output">
+              Output
+              <div class="score-large-text">
+                110 kW
+              </div>
+            </div>
+          </span>
+      </div>
+      <div class="future-scoreboard">
+          <div class="title">Future</div>
+          <span>
+            <div class="left-aligned">
+              Cost
+              <div class="score-large-text">
+                --
+              </div>
+            </div>
+            <div class="output">
+              Output
+              <div class="score-large-text">
+                --
+              </div>
+            </div>
+          </span>
+      </div>
+      </div>
+    </px-card>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'scoreboard-card'
+    });
+  </script>
+
+</dom-module>
