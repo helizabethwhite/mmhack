@@ -39,6 +39,10 @@
 	padding-bottom: 0.33rem !important;
 }
 
+.collapse-top-margin {
+	margin-top: 2em;
+}
+
 .p-left-column {
 	width: 50%;
     float: left;
