@@ -37,9 +37,11 @@
            method="GET"
            url="gendata.json"
            handle-as="json"
-           on-response="handleResponse">
+           on-response="handleResponse"
+           last-response="{{data}}">
 
         </iron-ajax>
+
       <div id="top-info">
         <div id="cost-output">
           <h2>Average Cost: $<span id="cost">1</span>M</h2>
@@ -122,7 +124,7 @@
           <px-dropdown id="asset-dropdown" display-value="Gas Gen - 9H2">
             <px-dropdown-content extend-dropdown='true'
               extend-dropdown-by='25' max-cont-character-width='10'
-              items='[{"key":"1","val":"Gas Gen - 9H2"},{"key":"2","val":"Gas Gen - 6A2"},{"key":"3","val":"Gas Gen - 7H2-IV"},
+              items='[{"key":"Generator 1","val":"Gas Gen - 9H2"},{"key":"Generator 2","val":"Gas Gen - 6A2"},{"key":"Generator 3"},
               {"key":"4","val":"Gas Gen - 9A4"}]'>
             </px-dropdown-content>
           </px-dropdown>
@@ -258,13 +260,12 @@
       _sendData: function() {
         this.getInitialData();
 
-        console.log(document.querySelector("#gt1-blk1 div px-dropdown").selectedKey);
         var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : "Gas Engine 1 - TS";
+        != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : "Gas Engine 1";
         var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : "Gas Turbine - 7FB.04";
+        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : "Gas Engine 2";
         var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gen1-blk1 div px-dropdown").selectedKey : 1;
+        != '' ? document.querySelector("#gen1-blk1 div px-dropdown").selectedKey : "Gas Generator 1";
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
@@ -315,6 +316,7 @@
       },
       handleResponse: function (data) { // return function from calling server for allAssets
           this.allAssets = data.detail.response;
+          console.log(this.data);
           this._updateSpecsGT1(this.allAssets.avgPowerData[0].avgPower,
                               this.allAssets.maxPowerData[0].maxPower,
                               this.allAssets.frequencyData[0].frequency,
@@ -328,15 +330,14 @@
                               this.allAssets.rampRateData[1].rampRate,
                               this.allAssets.minimumLoadData[1].minimumLoad,
                               this.allAssets.operatingCostData[1].operatingCost);
-          this._updateSpecsGen1(this.allAssets.powerFactorData[2].powerFactor,
+          this._updateSpecsGen1(this.allAssets.powerFactorData[0].powerFactor,
                                 this.allAssets.operatingCostData[2].operatingCost);
 
           var totalBlockCost = this.allAssets.operatingCostData[0].operatingCost
                                 + this.allAssets.operatingCostData[1].operatingCost
                                 + this.allAssets.operatingCostData[2].operatingCost;
           var totalBlockAverageOutput = this.allAssets.avgPowerData[0].avgPower
-                                + this.allAssets.avgPowerData[1].avgPower
-                                + this.allAssets.avgPowerData[2].avgPower;
+                                + this.allAssets.avgPowerData[1].avgPower;
           this._updateBlockCost(totalBlockCost);
           this._updateBlockOutput(totalBlockAverageOutput);
           console.log(data.detail.response);
