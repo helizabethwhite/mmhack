@@ -80,6 +80,16 @@
             element-href="/elements/views/partpicker-view.html">
           </px-view>
 
+          <app-route
+            route="[[_route]]"
+            pattern="/test"
+            active="{{_testActive}}">
+          </app-route>
+          <px-view
+            active="[[_testActive]]"
+            element-href="/elements/views/test-view.html">
+          </px-view>
+
         </main>
 
       </div>
@@ -122,6 +132,11 @@
             }, {
               "label": "Part Picker",
               "path": "/partpicker",
+              "icon": "fa-file-o"
+            },
+            {
+              "label": "Test",
+              "path": "/test",
               "icon": "fa-file-o"
             }]
           }

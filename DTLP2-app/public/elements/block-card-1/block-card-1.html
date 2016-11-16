@@ -26,7 +26,7 @@
         width: 200px;
       }
     </style>
-    <px-card header-text="Block 1" icon="fa-bolt" chevron="true">
+    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-click="_testLog">
       <div id="top-info">
         <div id="cost-output">
           <h2 id="cost">Cost: $180</h2>
@@ -81,7 +81,17 @@
 
   <script>
     Polymer({
-      is: 'block-card-1'
+      is: 'block-card-1',
+      properties: {},
+      ready: function() {
+        console.log('partpicker-view ready()')
+      },
+      _testLog: function() {
+        console.log("TEST TEST TEST");
+      }
+
+
+
     });
   </script>
 

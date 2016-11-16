@@ -1,0 +1,20 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-sample-cards/blank-card.html">
+<link rel="import" href="../../bower_components/px-view-header/px-view-header.html">
+<dom-module id="test-view">
+  <template>
+    <px-view-header title="TEST" style="display: block; margin-bottom: 6px;"></px-view-header>
+    <blank-card id="myCard">
+      Let's get part testing
+    </blank-card>
+  </template>
+  <script>
+    Polymer({
+      is: 'test-view',
+      properties: {},
+      ready: function() {
+        console.log('test-view ready()')
+      }
+    });
+  </script>
+</dom-module>
