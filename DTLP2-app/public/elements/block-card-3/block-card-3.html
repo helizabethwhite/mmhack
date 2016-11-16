@@ -35,7 +35,7 @@
     <iron-ajax
            id="requestAllAssets"
            method="GET"
-           url="gendata.json"
+           url="Block3.json"
            handle-as="json"
            on-response="handleResponse"
            last-response="{{data}}">
@@ -78,8 +78,8 @@
           -->
 
           <px-chart height="200" navigator-disabled>
-              <px-chart-series-line id="blk1-baseline" series-obj-name-key="block1Baseline" series-obj-data-key="blk1BaselineData">
-              <px-chart-series-line id="blk1-new" series-obj-name-key="block1New" series-obj-data-key="blk1NewData">
+              <px-chart-series-line id="blk3-baseline" series-obj-name-key="block3Baseline" series-obj-data-key="blk3BaselineData">
+              <px-chart-series-line id="blk3-new" series-obj-name-key="block3New" series-obj-data-key="blk3NewData">
           </px-chart>
         </div>
       </div>
@@ -89,7 +89,7 @@
       <div id="collapse" class="collapse-top-margin" hidden="true">
         <h2 id="equipment">Equipment:</h2>
 
-      <div id="gt1-blk1" class="block" >
+      <div id="gt1-blk3" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7IEA">
             <px-dropdown-content extend-dropdown='true'
@@ -132,7 +132,7 @@
         </div>
       </div>
 
-      <div id="gt2-blk1" class="block" >
+      <div id="gt2-blk3" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine - 7FB.04">
             <px-dropdown-content extend-dropdown='true'
@@ -170,7 +170,7 @@
         </div>
       </div>
 
-      <div id="gen1-blk1" class="block" >
+      <div id="gen1-blk3" class="block" >
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Gen - 9H2">
             <px-dropdown-content extend-dropdown='true'
@@ -327,16 +327,16 @@
       _sendData: function() {
         //this.getInitialData();this.getInitialData();
 
-        var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gt1-blk1 div px-dropdown").selectedKey : "Gas Engine 1";
-        var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gt2-blk1 div px-dropdown").selectedKey : "Gas Engine 2";
-        var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey
-        != '' ? document.querySelector("#gen1-blk1 div px-dropdown").selectedKey : "Generator 1";
+        var selectedGt1 = document.querySelector("#gt1-blk3 div px-dropdown").selectedKey
+        != '' ? document.querySelector("#gt1-blk3 div px-dropdown").selectedKey : "Gas Engine 1";
+        var selectedGt2 = document.querySelector("#gt2-blk3 div px-dropdown").selectedKey
+        != '' ? document.querySelector("#gt2-blk3 div px-dropdown").selectedKey : "Gas Engine 2";
+        var selectedGen1 = document.querySelector("#gen1-blk3 div px-dropdown").selectedKey
+        != '' ? document.querySelector("#gen1-blk3 div px-dropdown").selectedKey : "Generator 1";
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
-        var url = "http://localhost:1337/getBlockData/"
+        var url = "https://serverapp.run.aws-usw02-pr.ice.predix.io/getBlockData/"
         + selectedGt1 + "/" + selectedGt2 + "/" + selectedGen1;
         this.$.requestAllServerAssets.url = url;
         console.log(url);
@@ -350,24 +350,24 @@
         this._updateBlockOutput(300000);*/
       },
       _updateSpecsGT1: function(averageOutput, maxOutput, frequency, rampRate, minimumLoad, operatingCost) {
-        document.querySelector("#gt1-blk1 #specs #average-output").innerHTML = parseFloat(averageOutput).toFixed(2);
-        document.querySelector("#gt1-blk1 #specs #max-output").innerHTML = parseFloat(maxOutput).toFixed(2);
-        document.querySelector("#gt1-blk1 #specs #frequency").innerHTML = parseFloat(frequency).toFixed(2);
-        document.querySelector("#gt1-blk1 #specs #ramp-rate").innerHTML = parseFloat(rampRate).toFixed(2);
-        document.querySelector("#gt1-blk1 #specs #minimum-load").innerHTML = parseFloat(minimumLoad).toFixed(2);
-        document.querySelector("#gt1-blk1 #specs #operating-cost").innerHTML = parseFloat(operatingCost).toFixed(2);
+        document.querySelector("#gt1-blk3 #specs #average-output").innerHTML = parseFloat(averageOutput).toFixed(2);
+        document.querySelector("#gt1-blk3 #specs #max-output").innerHTML = parseFloat(maxOutput).toFixed(2);
+        document.querySelector("#gt1-blk3 #specs #frequency").innerHTML = parseFloat(frequency).toFixed(2);
+        document.querySelector("#gt1-blk3 #specs #ramp-rate").innerHTML = parseFloat(rampRate).toFixed(2);
+        document.querySelector("#gt1-blk3 #specs #minimum-load").innerHTML = parseFloat(minimumLoad).toFixed(2);
+        document.querySelector("#gt1-blk3 #specs #operating-cost").innerHTML = parseFloat(operatingCost).toFixed(2);
       },
       _updateSpecsGT2: function(averageOutput, maxOutput, frequency, rampRate, minimumLoad, operatingCost) {
-        document.querySelector("#gt2-blk1 #specs #average-output").innerHTML = parseFloat(averageOutput).toFixed(2);
-        document.querySelector("#gt2-blk1 #specs #max-output").innerHTML = parseFloat(maxOutput).toFixed(2);
-        document.querySelector("#gt2-blk1 #specs #frequency").innerHTML = parseFloat(frequency).toFixed(2);
-        document.querySelector("#gt2-blk1 #specs #ramp-rate").innerHTML = parseFloat(rampRate).toFixed(2);
-        document.querySelector("#gt2-blk1 #specs #minimum-load").innerHTML = parseFloat(minimumLoad).toFixed(2);
-        document.querySelector("#gt2-blk1 #specs #operating-cost").innerHTML = parseFloat(operatingCost).toFixed(2);
+        document.querySelector("#gt2-blk3 #specs #average-output").innerHTML = parseFloat(averageOutput).toFixed(2);
+        document.querySelector("#gt2-blk3 #specs #max-output").innerHTML = parseFloat(maxOutput).toFixed(2);
+        document.querySelector("#gt2-blk3 #specs #frequency").innerHTML = parseFloat(frequency).toFixed(2);
+        document.querySelector("#gt2-blk3 #specs #ramp-rate").innerHTML = parseFloat(rampRate).toFixed(2);
+        document.querySelector("#gt2-blk3 #specs #minimum-load").innerHTML = parseFloat(minimumLoad).toFixed(2);
+        document.querySelector("#gt2-blk3 #specs #operating-cost").innerHTML = parseFloat(operatingCost).toFixed(2);
       },
       _updateSpecsGen1: function(powerFactor, operatingCost) {
-        document.querySelector("#gen1-blk1 #specs #power-factor").innerHTML = parseFloat(powerFactor).toFixed(2);
-        document.querySelector("#gen1-blk1 #specs #operating-cost").innerHTML = parseFloat(operatingCost).toFixed(2);
+        document.querySelector("#gen1-blk3 #specs #power-factor").innerHTML = parseFloat(powerFactor).toFixed(2);
+        document.querySelector("#gen1-blk3 #specs #operating-cost").innerHTML = parseFloat(operatingCost).toFixed(2);
       },
       _updateBlockCost: function(cost) {
         document.querySelector("#cost-output #cost").innerHTML = parseFloat(cost).toFixed(2);
@@ -389,15 +389,15 @@
         }
       },
       _updateGraphBaseline: function(timeSeries){
-        document.querySelector("#blk1-baseline").seriesObj = {
-          blk1BaselineData: timeSeries,
-          block1Baseline: 'Baseline'
+        document.querySelector("#blk3-baseline").seriesObj = {
+          blk3BaselineData: timeSeries,
+          block3Baseline: 'Baseline'
         }
       },
       _updateGraphNew: function(timeSeries){
-        document.querySelector("#blk1-new").seriesObj = {
-          blk1NewData: timeSeries,
-          block1New: 'New'
+        document.querySelector("#blk3-new").seriesObj = {
+          blk3NewData: timeSeries,
+          block3New: 'New'
         }
       },
       handleResponse: function (data) { // return function from calling server for allAssets
