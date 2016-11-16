@@ -161,7 +161,7 @@
           // grab all assets
 
           this.$.requestAllAssets.generateRequest(); // leaves results in this.$.assets
-          console.log(this.allAssets);
+
           // var assets = this.$.assets.tags;
           // random query using 3 (or so) assets as a "block" (make sure these are valid)
 
@@ -288,7 +288,6 @@
           }
       },
       ready: function() {
-        console.log('partpicker-view ready()')
         this.getInitialData();
         //this.setData();
       },
@@ -303,8 +302,8 @@
 
         console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
 
-        this._updateSpecsGT1(69,70,71,72);
-        this._updateSpecsGT2(2,4,6,8);
+        //this._updateSpecsGT1(69,70,71,72);
+        //this._updateSpecsGT2(2,4,6,8);
         this._updateSpecsGen1(300,400,500);
         this._updateBlockCost(200000);
         this._updateBlockOutput(300000);
@@ -347,6 +346,8 @@
       },
       handleResponse: function (data) { // return function from calling server for allAssets
           this.allAssets = data.detail.response;
+          this._updateSpecsGT1(this.allAssets.maxPowerData[0].maxPower,70,71,72);
+          this._updateSpecsGT2(this.allAssets.maxPowerData[1].maxPower,4,6,8);
           console.log(data.detail.response);
       }
     });
