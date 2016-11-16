@@ -32,8 +32,8 @@
         margin-top: 0;
       }
     </style>
-    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-chevron-hit="_toggleCard">
-    <iron-ajax
+    <px-card header-text="Block 1" icon="fa-bolt" chevron="true" on-chevron-hit="_toggleCard" onload="load()">
+    <!--<iron-ajax
            auto
            id="requestAllAssets"
            method="POST"
@@ -54,7 +54,7 @@
                  }'
            handle-as="json"
            on-response="handleResponse">
-        </iron-ajax>
+        </iron-ajax>-->
 
       <div id="top-info">
         <div id="cost-output">
@@ -82,7 +82,8 @@
           -->
 
           <px-chart height="200" margin="[10,10,10,10]" spacing-bottom="0">
-
+              <px-chart-series-line id="blk1-baseline" series-obj-name-key="block1Baseline" series-obj-data-key="blk1BaselineData">
+              <px-chart-series-line id="blk1-new" series-obj-name-key="block1New" series-obj-data-key="blk1NewData">
           </px-chart>
         </div>
       </div>
@@ -152,7 +153,8 @@
 
     </px-card>
   </template>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="gendata.json"></script>
   <script>
     Polymer({
       is: 'block-card-1',
@@ -300,6 +302,11 @@
       },
       ready: function() {
         console.log('partpicker-view ready()');
+        //Add local timeseries data... needs to be updated to respond to requests 
+        $(document).ready(function(e) {
+          var blk1Baseline = gendata.aggregatedTimeSeriesData.powerVals;
+          addBaselineSeries(blk1Baseline);
+        });
         //this.setData();
       },
       _sendData: function() {
@@ -356,6 +363,18 @@
         return this.cost;
       }
     });
+    function addNewSeries(timeSeries){
+      document.querySelector("#blk1-new").seriesObj = {
+        blk1NewData: timeSeries,
+        block1New: 'New'
+      }
+    }
+    function addBaselineSeries(timeSeries){
+      document.querySelector("#blk1-baseline").seriesObj = {
+        blk1BaselineData: timeSeries,
+        block1Baseline: 'Baseline'
+      }
+    }
   </script>
 
 </dom-module>
