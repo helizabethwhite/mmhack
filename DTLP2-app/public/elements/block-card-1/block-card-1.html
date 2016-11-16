@@ -308,6 +308,8 @@
         this._updateSpecsGen1(300,400,500);
         this._updateBlockCost(200000);
         this._updateBlockOutput(300000);
+
+        this.fire("scoreboard-update");
       },
       _updateSpecsGT1: function(maxOutput, frequency, rampRate, minimumLoad) {
         document.querySelector("#gt1-blk1 #specs #max-output").innerHTML = maxOutput;
