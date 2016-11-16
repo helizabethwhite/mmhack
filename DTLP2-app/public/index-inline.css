@@ -40,16 +40,6 @@
 /**
      * Dark
      */
-
-:root {
-  --px-app-nav-background-color: #242326;
-  --px-app-nav-link-text-color: white;
-  --px-app-nav-link-selected-color: #086e87;
-  --px-app-nav-link-selected-active-color: #0986a4;
-  --px-app-nav-link-hover-color: #525156;
-  --px-app-nav-link-active-color: #3573c5;
-  --px-font-family: "GE Inspira Sans", sans-serif; }
-
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  *
@@ -252,11 +242,11 @@ a {
  * Improve readability when focused and also mouse hovered in all browsers.
  */ }
   a:link, a:visited {
-    color: var(--px-colors-design-primary-blue, #3e87e8); }
+    color: #3e87e8; }
   a:hover {
-    color: var(--px-colors-design-primary-blue-hover, #3573c5); }
+    color: #3573c5; }
   a:active {
-    color: var(--px-colors-design-primary-blue-pressed, #2b5ea2); }
+    color: #2b5ea2; }
   a:active, a:hover {
     outline: 0; }
 
@@ -1225,12 +1215,12 @@ sub {
             flex: none !important; } }
 
 :root {
-  --px-app-nav-background-color: var(--px-colors-design-gray10, #242326);
-  --px-app-nav-link-text-color: var(--px-colors-design-white, white);
-  --px-app-nav-link-selected-color: var(--px-colors-design-select-blue-pressed, #086e87);
-  --px-app-nav-link-selected-active-color: var(--px-colors-design-select-blue-hover, #0986a4);
-  --px-app-nav-link-hover-color: var(--px-colors-design-gray8, #525156);
-  --px-app-nav-link-active-color: var(--px-colors-design-primary-blue-hover, #3573c5);
+  --px-app-nav-background-color: #242326;
+  --px-app-nav-link-text-color: white;
+  --px-app-nav-link-selected-color: #086e87;
+  --px-app-nav-link-selected-active-color: #0986a4;
+  --px-app-nav-link-hover-color: #525156;
+  --px-app-nav-link-active-color: #3573c5;
   --px-font-family: "GE Inspira Sans", sans-serif; }
 
 .alpha {
@@ -1297,6 +1287,101 @@ button.btn {
 
 .btn + .btn {
   margin-left: 0.66667rem; }
+
+.btn--bare {
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  line-height: inherit;
+  font-size: 1.2rem;
+  width: 2.26667rem;
+  height: 2.26667rem;
+  box-shadow: none;
+  background: none;
+  outline: none; }
+  .btn--bare, .btn--bare:link, .btn--bare:visited, .btn--bare:hover, .btn--bare:active, .btn--bare:focus {
+    box-shadow: none;
+    background: none;
+    outline: none; }
+  .btn--bare, .btn--bare:link, .btn--bare:visited {
+    color: #525156; }
+  .btn--bare:hover {
+    color: #3e87e8; }
+  .btn--bare:active, .btn--bare:focus {
+    color: #2b5ea2; }
+
+.btn--primary {
+  border-color: #2b5ea2;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  background-color: #3e87e8; }
+  .btn--primary, .btn--primary:link, .btn--primary:visited, .btn--primary:hover, .btn--primary:active {
+    color: white; }
+  .btn--primary:hover {
+    border-color: transparent;
+    background-color: #3573c5; }
+  .btn--primary:active {
+    border-color: transparent;
+    background-color: #2b5ea2; }
+
+.btn--tertiary {
+  border-color: #b1b1bc;
+  box-shadow: none;
+  background-color: white; }
+  .btn--tertiary, .btn--tertiary:link, .btn--tertiary:visited, .btn--tertiary:hover, .btn--tertiary:active {
+    color: #3e87e8; }
+  .btn--tertiary:hover {
+    border-color: #9999a3;
+    box-shadow: none;
+    background-color: #e4e4ea; }
+  .btn--tertiary:active {
+    border-color: #7c7c84;
+    box-shadow: none;
+    background-color: #b1b1bc; }
+
+.btn--disabled, .btn--disabled:link, .btn--disabled:visited, .btn--disabled:hover, .btn--disabled:active,
+.btn[disabled],
+.btn[disabled]:link,
+.btn[disabled]:visited,
+.btn[disabled]:hover,
+.btn[disabled]:active {
+  border-color: #d1d0d8;
+  box-shadow: none;
+  cursor: not-allowed;
+  background-color: white;
+  color: #d1d0d8; }
+
+.btn--small {
+  height: 1.66667em;
+  font-size: 0.8rem;
+  line-height: calc(1.66667em - 2px); }
+
+/** Workaround for FF since it does not support calc().
+    * Other buttons appear ok with the height declaration, but non-button elements do not.
+  **/
+@-moz-document url-prefix() {
+  .btn--small {
+    line-height: 1.4em; } }
+
+.btn--large {
+  font-size: 1.33333rem; }
+
+.btn--huge {
+  font-size: 2rem; }
+
+.btn--full {
+  width: 100%; }
+
+.btn--icon {
+  width: 2em;
+  border-radius: 6.6666666667em;
+  padding: 1px 0 0 1px; }
+
+/** Workaround for FF since it does not support calc().
+  **/
+@-moz-document url-prefix() {
+  .btn--icon {
+    line-height: 1.8em; } }
 
 html {
   position: relative;

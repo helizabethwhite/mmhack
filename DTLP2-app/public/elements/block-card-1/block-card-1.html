@@ -3,7 +3,6 @@
 <link rel="import" href="../../bower_components/collapsable-px-card/collapsable-px-card.html">
 <link rel="import" href="../../bower_components/px-dropdown/px-dropdown.html">
 <link rel="import" href="../../bower_components/px-chart/px-chart.html">
-<link rel="import" href="../../bower_components/px-buttons-design/px-buttons-design.html">
 
 <dom-module id="block-card-1">
 
@@ -145,7 +144,17 @@
         allAssets: {
           type: Object,
           notify: true
-        } 
+        },
+        cost: {
+           type: Number,
+           notify: true,
+           value: 5
+         },
+         output: {
+           type: Number,
+           notify: true,
+           value: 78
+         }
       },
       getInitialData: function() {
 
@@ -203,7 +212,7 @@
           };*/
 
           //console.log(this.allAssets);
-          
+
           // call update functions to show data on the page
       },
       // this function is used to fill the page with proper asset/block data from the db
