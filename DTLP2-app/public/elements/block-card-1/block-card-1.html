@@ -21,7 +21,7 @@
         width: 50%;
       }
       #graph {
-        clear: left
+        clear: left;
       }
       .clear {
         clear: both;
@@ -64,9 +64,9 @@
       <div class="clear">
       </div>
       <div id="collapse">
-        <h2 id="equipment">Equipment:</div>
+        <h2 id="equipment">Equipment:</h2>
 
-      <!--<div id="asset">
+      <div id="gt1-blk1">
         <div class="dropdown">
           <px-dropdown id="asset-dropdown" display-value="Gas Turbine 1">
             <px-dropdown-content extend-dropdown='true'
@@ -82,9 +82,44 @@
           <p id="ramp-rate">Ramp Rate: 5</p>
           <p id="minimum-load">Minimum Load: 25</p>
         </div>
-      </div> -->
+      </div>
+
+      <div id="gt2-blk1">
+        <div class="dropdown">
+          <px-dropdown id="asset-dropdown" display-value="Gas Turbine 2">
+            <px-dropdown-content extend-dropdown='true'
+              extend-dropdown-by='25' max-cont-character-width='10'
+              items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
+              {"key":"4","val":"Gas Turbine 4"}]'>
+            </px-dropdown-content>
+          </px-dropdown>
+        </div>
+        <div class="specs">
+          <p id="max-output">Max Output: 50mW</p>
+          <p id="frequency">Frequency: 60</p>
+          <p id="ramp-rate">Ramp Rate: 5</p>
+          <p id="minimum-load">Minimum Load: 25</p>
+        </div>
+      </div>
+
+      <div id="gen1-blk1">
+        <div class="dropdown">
+          <px-dropdown id="asset-dropdown" display-value="Gas Generator">
+            <px-dropdown-content extend-dropdown='true'
+              extend-dropdown-by='25' max-cont-character-width='10'
+              items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
+              {"key":"4","val":"Gas Turbine 4"}]'>
+            </px-dropdown-content>
+          </px-dropdown>
+        </div>
+        <div class="specs">
+          <p id="max-output">Max Output: 50mW</p>
+          <p id="power-factor">Power Factor: 60</p>
+        </div>
+      </div>
 
     </div>
+    <button on-click="_sendData">Submit</button>
     </px-card>
   </template>
 
@@ -166,10 +201,16 @@
       },
       ready: function() {
         console.log('partpicker-view ready()')
-        this.setData();
+        //this.setData();
+      },
+      _sendData: function() {
+        var selectedGt1 = document.querySelector("#gt1-blk1 div px-dropdown").selectedKey;
+        var selectedGt2 = document.querySelector("#gt2-blk1 div px-dropdown").selectedKey;
+        var selectedGen1 = document.querySelector("#gen1-blk1 div px-dropdown").selectedKey;
+        console.log("getData(" + selectedGt1 + "," + selectedGt2 + "," + selectedGen1 + ")");
       },
       _testLog: function() {
-        console.log("TEST TEST TEST");
+
       },
       _toggleCard: function() {
         console.log("collapse card");
