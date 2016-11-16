@@ -40,43 +40,26 @@
       <div class="clear">
       </div>
       <div id="collapse">
-      <h2 id="equipment-title">Equipment:</h2>
-      <div class="dropdown">
-        <px-dropdown display-value="Gas Turbine 1"><px-dropdown-content extend-dropdown='true'
-          extend-dropdown-by='25' max-cont-character-width='10'
-          items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
-          {"key":"4","val":"Gas Turbine 4"}]'></px-dropdown-content></px-dropdown>
-      </div>
-      <div class="specs">
-        <p id="max-output">Frequency: 60</p>
-        <p id="frequency">Max Output: 50mW</p>
-        <p id="ramp-rate">Ramp Rate: 5</p>
-        <p id="minimum-load">Minimum Load: 25</p>
-      </div>
-      <div class="dropdown">
-        <px-dropdown display-value="Gas Turbine 2"><px-dropdown-content extend-dropdown='true'
-          extend-dropdown-by='25' max-cont-character-width='10'
-          items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
-          {"key":"4","val":"Gas Turbine 4"}]'></px-dropdown-content></px-dropdown>
-      </div>
-      <div class="specs">
-        <p id="max-output">Frequency: 60</p>
-        <p id="frequency">Max Output: 50mW</p>
-        <p id="ramp-rate">Ramp Rate: 5</p>
-        <p id="minimum-load">Minimum Load: 25</p>
-      </div>
-      <div class="dropdown">
-        <px-dropdown display-value="Gas Turbine 3"><px-dropdown-content extend-dropdown='true'
-          extend-dropdown-by='25' max-cont-character-width='10'
-          items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
-          {"key":"4","val":"Gas Turbine 4"}]'></px-dropdown-content></px-dropdown>
-      </div>
-      <div class="specs">
-        <p id="max-output">Frequency: 60</p>
-        <p id="frequency">Max Output: 50mW</p>
-        <p id="ramp-rate">Ramp Rate: 5</p>
-        <p id="minimum-load">Minimum Load: 25</p>
-      </div>
+        <h2 id="equipment">Equipment:</div>
+
+      <!--<div id="asset">
+        <div class="dropdown">
+          <px-dropdown id="asset-dropdown" display-value="Gas Turbine 1">
+            <px-dropdown-content extend-dropdown='true'
+              extend-dropdown-by='25' max-cont-character-width='10'
+              items='[{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
+              {"key":"4","val":"Gas Turbine 4"}]'>
+            </px-dropdown-content>
+          </px-dropdown>
+        </div>
+        <div class="specs">
+          <p id="max-output">Max Output: 50mW</p>
+          <p id="frequency">Frequency: 60</p>
+          <p id="ramp-rate">Ramp Rate: 5</p>
+          <p id="minimum-load">Minimum Load: 25</p>
+        </div>
+      </div> --> 
+      
     </div>
     </px-card>
   </template>
@@ -85,8 +68,81 @@
     Polymer({
       is: 'block-card-1',
       properties: {},
+      // this function is used to fill the page with proper asset/block data from the db
+      setData: function() {
+          // get the data from the db
+          // set the corresponding page elements
+          var blockData = [2,2]; // dummy
+          var numAssets = 0;
+          for (var asset in blockData) {
+            var parentDiv = document.createElement("div");
+            parentDiv.id = "asset-" + numAssets; // create overarching div
+
+            // create dropdown
+            var dropdown = document.createElement("div");
+            dropdown.class = "dropdown";
+
+            // create px-dropdown
+            var pxDropdown = document.createElement("px-dropdown");
+            //pxDropdown.id = "asset-dropdown-"+numAssets;
+            //console.log(pxDropdown.id);
+            pxDropdown["display-value"] = "INSERT DATA HERE"; // name the asset // REPLACE THIS WITH DATA
+
+
+            // add dropdown contents
+            var pxDropdownContent = document.createElement("px-dropdown-content");
+            pxDropdownContent.items = [{"key":"1","val":"Gas Turbine 1"},{"key":"2","val":"Gas Turbine 2"},{"key":"3","val":"Gas Turbine 3"},
+            {"key":"4","val":"Gas Turbine 4"}]; // REPLACE THIS WITH DATA
+
+            pxDropdownContent["extend-dropdown"] = true;
+
+            console.log(pxDropdownContent.items);
+
+            // add all elements to parentDiv
+            pxDropdown.appendChild(pxDropdownContent);
+            dropdown.appendChild(pxDropdown);
+            console.log(dropdown.class);
+
+            parentDiv.appendChild(dropdown);
+
+            var specsDiv = document.createElement("div");
+            specsDiv.class = "specs";
+
+            var output = document.createElement("p");
+            output.id = "max-output";
+            output.innerHTML = "Max Output: " + "blockData.maxOutput";
+
+            var frequency = document.createElement("p");
+            frequency.id = "frequency";
+            frequency.innerHTML = "Frequency: " + "blockData.frequency";
+
+            var rampRate = document.createElement("p");
+            rampRate.id = "ramp-rate";
+            rampRate.innerHTML = "Ramp Rate: " + "blockData.rampRate";
+
+            var minLoad = document.createElement("p");
+            minLoad.id = "minimum-load";
+            minLoad.innerHTML = "Minimum Load: " + "blockData.minLoad";
+
+            // add all p elements to specsDiv
+            specsDiv.appendChild(output);
+            specsDiv.appendChild(frequency);
+            specsDiv.appendChild(rampRate);
+            specsDiv.appendChild(minLoad);
+
+            // add specsDiv to parentDiv
+            parentDiv.appendChild(specsDiv);
+
+            var h2Div = this.$.equipment;
+            // insert parentDiv after h2 "equipment"
+            h2Div.parentNode.insertBefore(parentDiv, h2Div.nextSibling);
+
+            numAssets++;
+          }
+      },
       ready: function() {
         console.log('partpicker-view ready()')
+        this.setData();
       },
       _testLog: function() {
         console.log("TEST TEST TEST");
