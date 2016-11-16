@@ -12,6 +12,18 @@ $inuit-webfont-path: "/bower_components/px-typography-design/type";
 @import "px-typography-design/_base.typography.scss";
 @import "px-headings-design/_base.headings.scss";
 
+
+$inuit-enable-btn--small
+$inuit-enable-btn--large
+$inuit-enable-btn--huge
+$inuit-enable-btn--full
+$inuit-enable-btn--primary
+$inuit-enable-btn--tertiary
+$inuit-enable-btn--disabled
+$inuit-enable-btn--bare
+$inuit-enable-btn--icon
+@import "px-buttons-design/_objects.buttons.scss";
+
 // Meta
 // Objects
 
