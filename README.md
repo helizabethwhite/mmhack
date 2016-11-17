@@ -7,6 +7,6 @@ Try substituting current assets/equipment with other options from the GE Catalog
 
 # Live Demo
 dtlp2.run.aws-usw02-pr.ice.predix.io
-
+EDIT: The demo will only work when server is started, which is unlikely. UI components are all available in either case.
 
 
